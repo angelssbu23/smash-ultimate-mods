@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acceso y Registro</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
+    body {
+      font-family: 'Bangers', cursive;
+      background: linear-gradient(45deg, red, blue, purple, cyan, green, yellow);
+      background-size: 400% 400%;
+      animation: rgbBG 10s ease infinite;
+      padding: 20px;
+      color: #fff;
+      text-shadow: 2px 2px 4px #000;
+      overflow-x: hidden;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.2rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: auto;
+      background: rgba(0,0,0,0.65);
+      padding: 25px;
+      border-radius: 15px;
+      border: 3px solid #ffcc00;
+      box-shadow: 0 0 25px rgba(255,204,0,0.7);
+      margin-bottom: 40px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 2px solid #ffcc00;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.9);
+      font-family: Arial, sans-serif;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(45deg, #ff0000, #ffcc00);
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ffcc00;
+    }
+
+    .msg, .error {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+
+    @keyframes rgbBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- VIDEO DE FONDO -->
+<video autoplay loop muted id="bgVideo"
+  style="position: fixed; top:0; left:0; width:100%; height:100%; object-fit: cover; z-index:-1;">
+</video>
+
+<script>
+  window.onload = () => {
+    document.getElementById('bgVideo').src = 'ssbu/ssbu.mp4';
+  };
+
+  function activarSonido() {
+    const vid = document.getElementById('bgVideo');
+    vid.muted = false;
+    vid.play();
+  }
+</script>
+
+<button onclick="activarSonido()" 
+  style="position:fixed; top:10px; right:10px; padding:10px 20px; background:#ffcc00; border:none; border-radius:10px; font-family:'Bangers'; font-size:15px; cursor:pointer; z-index:10;">
+  Activar Sonido
+</button>
+
+<div style="display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; gap:40px;">
+
+  <h2 style="margin-top:20px;">REGISTRO DE USUARIOS</h2>
+  <div class="container">
+    <input type="text" id="regUser" placeholder="Usuario" />
+    <input type="email" id="regEmail" placeholder="Correo" />
+    <input type="password" id="regPass" placeholder="Contraseña" />
+    <button onclick="registrar()">Registrarme</button>
+    <p id="regMsg" class="msg"></p>
+  </div>
+
+  <h2>ACCESO</h2>
+  <div class="container">
+    <input type="text" id="loginUser" placeholder="Usuario" />
+    <input type="password" id="loginPass" placeholder="Contraseña" />
+    <button onclick="acceder()">Acceder</button>
+    <p id="loginMsg" class="error"></p>
+  </div>
+
+</div>
+
+<script>
+
+  function registrar() {
+    const user = document.getElementById('regUser').value;
+    const email = document.getElementById('regEmail').value;
+    const pass = document.getElementById('regPass').value;
+
+    if (!user || !email || !pass) {
+      document.getElementById('regMsg').innerText = 'Llena todos los campos.';
+      return;
+    }
+
+    const newUser = { user, email, pass };
+    localStorage.setItem('usuarioRegistrado', JSON.stringify(newUser));
+
+    document.getElementById('regMsg').innerText = 'Registro exitoso ✅';
+  }
+
+  // ✅ ACCESO 100% FUNCIONAL
+  function acceder() {
+    const user = document.getElementById('loginUser').value;
+    const pass = document.getElementById('loginPass').value;
+
+    const data = JSON.parse(localStorage.getItem('usuarioRegistrado'));
+
+    if (!data) {
+      document.getElementById('loginMsg').innerText = 'No hay usuarios registrados.';
+      return;
+    }
+
+    if (user === data.user && pass === data.pass) {
+      document.getElementById('loginMsg').style.color = 'green';
+      document.getElementById('loginMsg').innerText = 'Acceso concedido ✅';
+
+      // ✅ ACTIVAR SESIÓN
+      localStorage.setItem('isLogged', 'true');
+
+      // ✅ REDIRIGIR
+      setTimeout(() => {
+        window.location.href = "Smash Ultmate Mods.html";
+      }, 1000);
+
+    } else {
+      document.getElementById('loginMsg').style.color = 'red';
+      document.getElementById('loginMsg').innerText = 'Usuario o contraseña incorrectos.';
+    }
+  }
+</script>
+
+</body>
+</html>

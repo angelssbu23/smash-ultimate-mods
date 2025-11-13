@@ -1,0 +1,4095 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Top 5 Mods de Super Smash Bros. Ultimate</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+  /* Fuente moderna y grande para toda la página */
+body {
+  font-family: 'Poppins', sans-serif; /* Fuente moderna */
+  font-size: 22px; /* Más grande */
+  line-height: 1.6;
+  color: white;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Títulos con efecto de aura arcoíris */
+h1, h2, h3 {
+  font-size: 3rem; /* Títulos grandes */
+  font-weight: 900;
+  background: linear-gradient(45deg, #ff0000, #ff7f00, #ffff00, #00ff00, #00ffff, #0000ff, #8b00ff, #ff00ff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbowText 8s ease infinite;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #ff00ff,
+    0 0 30px #00ffff,
+    0 0 40px #ff0000;
+}
+
+/* Animación de arcoiris para la fuente */
+@keyframes rainbowText {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Pequeñas chispitas flotando */
+.chispas {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(45deg, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: flotar 3s linear infinite;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-200px) translateX(50px) scale(0.5); opacity: 0; }
+}
+    /* Video de fondo */
+    .background {
+      position: fixed;
+      top: 0; left: 0;
+      width: 99%; height: 99%;
+      object-fit: cover;
+      z-index: -3; /* Detrás de todo */
+    }
+
+    /* Efecto RGB animado encima del video */
+    .rgb-effect {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(45deg,
+        #ff0000,
+        #ff7f00,
+        #ffff00,
+        #00ff00,
+        #00ffff,
+        #0000ff,
+        #8b00ff,
+        #ff00ff,
+        #ff0000
+      );
+      background-size: 600% 600%;
+      animation: rgbAnim 15s linear infinite;
+      mix-blend-mode: overlay; /* Mezcla con el video */
+      opacity: 0.5; /* Ajusta la intensidad */
+      z-index: -2;
+    }
+
+    @keyframes rgbAnim {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Capa oscura para que el contenido se lea */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.45);
+      z-index: -1;
+    }
+
+    header, footer {
+      text-align: center;
+      padding: 20px;
+    }
+
+    section {
+      padding: 20px;
+      display: none;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    img {
+      display: block;
+      margin: 20px auto;
+      border-radius: 10px;
+    }
+
+    a {
+      color: #4da6ff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      columns: 2;
+    }
+
+    li {
+      margin: 10px 0;
+    }
+
+    h1 {
+      color: #ffffff;
+      text-shadow: 0 0 12px #00aaff, 0 0 20px #00ffff;
+    }
+
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+      gap: 10px;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .character-card {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      background-color: #111;
+      border: 2px solid #222;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 0 10px #000;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .character-card img {
+      width: 100%;
+      height: 75%;
+      object-fit: contain;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .character-card p {
+      margin: 0;
+      padding: 2px 0;
+      font-size: 12px;
+      font-weight: bold;
+      color: white;
+      text-transform: uppercase;
+      text-shadow: 0 0 4px #00aaff;
+      background: rgba(0, 0, 0, 0.4);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .character-card:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #00aaff;
+      border-color: #00aaff;
+    }
+
+    button {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 2;
+      padding: 10px 15px;
+      background: #00aaff;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0088cc;
+    }
+/* ----------------------------- */
+/* 🌐 DISEÑO PARA CELULARES 📱 */
+/* ----------------------------- */
+@media (max-width: 768px) {
+
+  body {
+    font-size: 18px;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  section {
+    padding: 15px;
+  }
+
+  /* Ajustar el video de fondo */
+  .background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Ajuste del botón de música */
+  button {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  /* Cuadro de ayuda ocupa más espacio y texto más pequeño */
+  #help-content {
+    width: 90%;
+    margin: 20px auto;
+    font-size: 16px;
+  }
+
+  .help-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Rejilla de personajes en una sola columna */
+  .character-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+  }
+
+  .character-card {
+    width: 100%;
+    height: auto;
+  }
+
+  .character-card img {
+    height: auto;
+    max-width: 100%;
+  }
+
+  /* Botón de ayuda más grande y visible */
+  .help-btn {
+    width: 60px;
+    height: 60px;
+    left: 15px;
+    bottom: 15px;
+    font-size: 0.9em;
+  }
+
+  /* Centrar texto del header */
+  header {
+    text-align: center;
+    padding: 10px;
+  }
+
+  /* Asegurar que las secciones se vean bien apiladas */
+  .info, .imagen {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+
+<audio id="selectSound" src="SSBU/FINAL.mp3" preload="auto"></audio>
+
+
+<!-- Botón de ayuda abajo a la derecha -->
+<button class="help-btn" onclick="toggleHelp()">Ayuda</button>
+
+<!-- Overlay de ayuda -->
+<div id="help-overlay">
+  <div id="help-content">
+    <button id="close-help" onclick="toggleHelp()">Cerrar</button>
+    <h2>COMO INSTALAR Y ACTIAVR LOS MODS</h2>
+    <div class="help-item">
+      <p>Primero descargamos el mod que queremos</p>
+      <img src="ssbu/descargas.jpeg" alt="Imagen 1" width="400">
+    </div>
+    <div class="help-item">
+      <p>Extraemos el mod que se descargo</p>
+      <img src="ssbu/extrae.jpeg" alt="Imagen 2" width="400">
+    </div>
+    <div class="help-item">
+      <p>En nuestra Switch, entramos en la app que transimite archivos, y la conectamos a nuestra PC</p>
+      <img src="ssbu/usb.jpeg" alt="Imagen 3" width="400">
+    </div>
+    <div class="help-item">
+      <p>Una vez extraido, nos vamos a la carpeta ultimate que se encuntra en la raiz de nuestra SD</p>
+      <img src="ssbu/ultimate.jpeg" alt="Imagen 4" width="400">
+    </div>
+    <div class="help-item">
+      <p>Dentro de la carpeta ultimate, nos metemos a la carpeta mods, que es donde van todos los mods, la otra carpeta es el programa que carga los mods</p>
+      <img src="ssbu/mods.jpeg" alt="Imagen 5" width="400">
+<div class="help-item">
+      <p>Y pegamos ahi el mod extraido ya</p>
+      <img src="ssbu/d.jpeg" alt="Imagen 3" width="400">
+    </div>
+    <div class="help-item">
+      <p>Una vez eso, salimos de la app y entramos al juego, y entramos a la NShop, que es donde se manejan los mods</p>
+      <img src="ssbu/shop.jpeg" alt="Imagen 4" width="400">
+    </div>
+<div class="help-item">
+      <p>Buscamos el mod que descargamos y los activamos con el Boton A, se vera una palomita para darse cuenta que esta activado</p>
+      <img src="ssbu/activo.jpeg" alt="Imagen 3" width="400">
+    </div>
+    <div class="help-item">
+      <p>Y por ultimo entramos a cualquier modo de juegoy buscamos el mod que descargamos y listooo</p>
+      <img src="ssbu/stock.jpeg" alt="Imagen 4" width="400">
+    </div>
+       </div>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+<style>
+.help-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 30px;
+  width: 50px;          /* ancho fijo */
+  height: 50px;         /* alto fijo */
+  border: none;
+  border-radius: 50%;   /* lo hace redondo */
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+  background-color: #3498db;
+  cursor: url("q.png") 16 16, help;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+.help-btn:hover {
+  background-color: #5dade2;
+}
+/* Overlay de ayuda */
+#help-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 99;
+  overflow-y: auto;
+}
+
+/* Contenido dentro del overlay */
+#help-content {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #111;
+  border-radius: 10px;
+  color: white;
+}
+
+/* Botón cerrar */
+#close-help {
+  float: right;
+  background: red;
+  border: none;
+  color: white;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.help-item {
+  margin-bottom: 30px;
+}
+
+.help-item img {
+  display: block;
+  margin: 10px auto;
+  border-radius: 10px;
+}
+</style>
+
+<script>
+// Mostrar / ocultar overlay de ayuda
+function toggleHelp() {
+  const overlay = document.getElementById('help-overlay');
+  if (overlay.style.display === 'block') {
+    overlay.style.display = 'none';
+  } else {
+    overlay.style.display = 'block';
+  }
+}
+</script>
+
+  
+  <!-- Video de fondo -->
+  <video class="background" autoplay muted loop playsinline>
+    <source src="SSBU/SMASH.mp4" type="video/mp4">
+    Tu navegador no soporta videos.
+  </video>
+
+  <!-- Efecto RGB animado -->
+  <div class="rgb-effect"></div>
+
+  <!-- Capa oscura -->
+  <div class="overlay"></div>
+
+  <!-- Botón de música -->
+  <audio id="bgMusic" src="SSBU/SSBU MENU.mp3" loop></audio>
+  <button onclick="toggleMusic()">Play / Mute</button>
+
+<script>
+ const music = document.getElementById('bgMusic');
+const selectSound = document.getElementById('selectSound'); // audio de selección
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+  } else {
+    music.pause();
+  }
+}
+
+// Función de selección de personaje
+function show(name, event) {
+  const cards = document.querySelectorAll('.character-card');
+  cards.forEach(c => c.classList.remove('selected'));
+
+  // Marca la tarjeta clickeada
+  event.currentTarget.classList.add('selected');
+
+  // Reproduce el sonido de selección
+  selectSound.currentTime = 0; // reinicia al inicio
+  selectSound.volume = 0.4;
+  selectSound.play();
+
+  console.log("Has seleccionado a " + name.toUpperCase());
+}
+</script>
+
+
+  <section id="mod2">
+    <h2>Mod 2</h2>
+    <p>Descripción del mod 2</p>
+  </section>
+
+  <section id="mod3">
+    <h2>Mod 3</h2>
+    <p>Descripción del mod 3</p>
+  </section>
+
+  <section id="mod4">
+    <h2>Mod 4</h2>
+    <p>Descripción del mod 4</p>
+  </section>
+
+  <section id="mod5">
+    <h2>Mod 5</h2>
+    <p>Descripción del mod 5</p>
+  </section>
+
+</body>
+</html>
+   
+<!-- Página principal -->
+<section id="home" class="active">
+  <header>
+    <h1>Top 5 Mods de Super Smash Bros. Ultimate</h1>
+    <p>En esta página verás lo necesario para los mods, como los programas para que funcionen y cómo instalarlos y, por supuesto, los 5 mejores mods (por personaje) para tus luchadores de Super Smash Bros Ultimate</p>
+  </header>
+
+  <p style="text-align:center;">
+    <a href="#" onclick="show('catalog')">Ir al catálogo de mods</a>
+  </p>
+
+  <img src="ssbu/ssbu.png" alt="Carátula" width="1000" height="400">
+
+  <footer>
+    <p>© 2025 - Comunidad de Mods de Super Smash Bros. Ultimate. GAMEBANANA Y los alumnos Angel Hernandez Lagunas y Andrea Barrios Jaimes</p>
+  </footer>
+</section>
+
+<!-- Catálogo de personajes -->
+<section id="catalog">
+  <header>
+    <h1>Catálogo de Personajes</h1>
+    <p>CHOOSE YOUR FIGTHER!.</p>
+  </header>
+
+  <ul>
+    <div class="character-grid">
+  <a href="#" onclick="show('mario')" class="character-card">
+    <img src="ssbu/mario.png" alt="Mario" width="80" height="80"> 
+    <p>Mario</p>
+  </a>
+  <a href="#" onclick="show('donkey-kong')" class="character-card">
+    <img src="ssbu/donkey.png" alt="Donkey Kong">
+    <p>Donkey Kong</p>
+  </a>
+  <a href="#" onclick="show('link')" class="character-card">
+    <img src="ssbu/link.png" alt="Link">
+    <p>Link</p>
+  </a>
+  <a href="#" onclick="show('samus')" class="character-card">
+    <img src="ssbu/samus.png" alt="Samus">
+    <p>Samus</p>
+  </a>
+  <a href="#" onclick="show('samus oscura')" class="character-card">
+    <img src="ssbu/oscura.png" alt="Samus Oscura">
+    <p>Samus Oscura</p>
+  </a>
+  <a href="#" onclick="show('yoshi')" class="character-card">
+    <img src="ssbu/yoshi.png" alt="Yoshi">
+    <p>Yoshi</p>
+  </a>
+  <a href="#" onclick="show('kirby')" class="character-card">
+    <img src="ssbu/kirby.png" alt="Kirby">
+    <p>Kirby</p>
+  </a>
+  <a href="#" onclick="show('fox')" class="character-card">
+    <img src="ssbu/fox.png" alt="Fox">
+    <p>Fox</p>
+  </a>
+  <a href="#" onclick="show('pikachu')" class="character-card">
+    <img src="ssbu/pikachu.png" alt="Pikachu">
+    <p>Pikachu</p>
+  </a>
+  <a href="#" onclick="show('luigi')" class="character-card">
+    <img src="ssbu/luigi.png" alt="Luigi">
+    <p>Luigi</p>
+  </a>
+  <a href="#" onclick="show('ness')" class="character-card">
+    <img src="ssbu/ness.png" alt="Ness">
+    <p>Ness</p>
+  </a>
+  <a href="#" onclick="show('captain-falcon')" class="character-card">
+    <img src="ssbu/falcon.png" alt="Captain Falcon">
+    <p>Captain Falcon</p>
+  </a>
+  <a href="#" onclick="show('jigglypuff')" class="character-card">
+    <img src="ssbu/purin.png" alt="Jigglypuff">
+    <p>Jigglypuff</p>
+  </a>
+  <a href="#" onclick="show('peach')" class="character-card">
+    <img src="ssbu/peach.png" alt="Peach">
+    <p>Peach</p>
+  </a>
+  <a href="#" onclick="show('daisy')" class="character-card">
+    <img src="ssbu/daisy.png" alt="Daisy">
+    <p>Daisy</p>
+  </a>
+  <a href="#" onclick="show('bowser')" class="character-card">
+    <img src="ssbu/bowser.png" alt="Bowser">
+    <p>Bowser</p>
+  </a>
+  <a href="#" onclick="show('ice-climbers')" class="character-card">
+    <img src="ssbu/ice.png" alt="Ice Climbers">
+    <p>Ice Climbers</p>
+  </a>
+  <a href="#" onclick="show('sheik')" class="character-card">
+    <img src="ssbu/sheik.png" alt="Sheik">
+    <p>Sheik</p>
+  </a>
+  <a href="#" onclick="show('zelda')" class="character-card">
+    <img src="ssbu/zelda.png" alt="Zelda">
+    <p>Zelda</p>
+  </a>
+  <a href="#" onclick="show('dr.-mario')" class="character-card">
+    <img src="ssbu/dr.png" alt="Dr. Mario">
+    <p>Dr. Mario</p>
+  </a>
+  <a href="#" onclick="show('pichu')" class="character-card">
+    <img src="ssbu/pichu.png" alt="Pichu">
+    <p>Pichu</p>
+  </a>
+  <a href="#" onclick="show('falco')" class="character-card">
+    <img src="ssbu/falco.png" alt="Falco">
+    <p>Falco</p>
+  </a>
+  <a href="#" onclick="show('marth')" class="character-card">
+    <img src="ssbu/marth.png" alt="Marth">
+    <p>Marth</p>
+  </a>
+  <a href="#" onclick="show('lucina')" class="character-card">
+    <img src="ssbu/lucina.png" alt="Lucina">
+    <p>Lucina</p>
+  </a>
+  <a href="#" onclick="show('young-link')" class="character-card">
+    <img src="ssbu/young.png" alt="Young Link">
+    <p>Young Link</p>
+  </a>
+  <a href="#" onclick="show('ganondorf')" class="character-card">
+    <img src="ssbu/ganondorf.png" alt="Ganondorf">
+    <p>Ganondorf</p>
+  </a>
+  <a href="#" onclick="show('mewtwo')" class="character-card">
+    <img src="ssbu/mewtwo.png" alt="Mewtwo">
+    <p>Mewtwo</p>
+  </a>
+  <a href="#" onclick="show('roy')" class="character-card">
+    <img src="ssbu/roy.png" alt="Roy">
+    <p>Roy</p>
+  </a>
+  <a href="#" onclick="show('chrom')" class="character-card">
+    <img src="ssbu/chrom.png" alt="Chrom">
+    <p>Chrom</p>
+  </a>
+  <a href="#" onclick="show('mr.-game-and-watch')" class="character-card">
+    <img src="ssbu/mr.png" alt="Mr. Game & Watch">
+    <p>Mr. Game & Watch</p>
+  </a>
+  <a href="#" onclick="show('meta-knight')" class="character-card">
+    <img src="ssbu/meta.png" alt="Meta Knight">
+    <p>Meta Knight</p>
+  </a>
+  <a href="#" onclick="show('pit')" class="character-card">
+    <img src="ssbu/pit.png" alt="Pit">
+    <p>Pit</p>
+  </a>
+  <a href="#" onclick="show('dark-pit')" class="character-card">
+    <img src="ssbu/dark.png" alt="Dark Pit">
+    <p>Dark Pit</p>
+  </a>
+  <a href="#" onclick="show('zero-suit-samus')" class="character-card">
+    <img src="ssbu/zero.png" alt="Zero Suit Samus">
+    <p>Zero Suit Samus</p>
+  </a>
+  <a href="#" onclick="show('wario')" class="character-card">
+    <img src="ssbu/wario.png" alt="Wario">
+    <p>Wario</p>
+  </a>
+  <a href="#" onclick="show('snake')" class="character-card">
+    <img src="ssbu/snake.png" alt="Snake">
+    <p>Snake</p>
+  </a>
+  <a href="#" onclick="show('ike')" class="character-card">
+    <img src="ssbu/ike.png" alt="Ike">
+    <p>Ike</p>
+  </a>
+  <a href="#" onclick="show('entrenador-pokémon')" class="character-card">
+    <img src="ssbu/pokemon.png" alt="Entrenador Pokémon">
+    <p>Entrenador Pokémon</p>
+  </a>
+  <a href="#" onclick="show('diddy-kong')" class="character-card">
+    <img src="ssbu/diddy.png" alt="Diddy Kong">
+    <p>Diddy Kong</p>
+  </a>
+  <a href="#" onclick="show('lucas')" class="character-card">
+    <img src="ssbu/lucas.png" alt="Lucas">
+    <p>Lucas</p>
+  </a>
+  <a href="#" onclick="show('sonic')" class="character-card">
+    <img src="ssbu/sonic.png" alt="Sonic">
+    <p>Sonic</p>
+  </a>
+  <a href="#" onclick="show('rey-dedede')" class="character-card">
+    <img src="ssbu/rey.png" alt="Rey Dedede">
+    <p>Rey Dedede</p>
+  </a>
+  <a href="#" onclick="show('olimar')" class="character-card">
+    <img src="ssbu/olimar.png" alt="Olimar">
+    <p>Olimar</p>
+  </a>
+  <a href="#" onclick="show('lucario')" class="character-card">
+    <img src="ssbu/lucario.png" alt="Lucario">
+    <p>Lucario</p>
+  </a>
+  <a href="#" onclick="show('r.o.b.')" class="character-card">
+    <img src="ssbu/rob.png" alt="R.O.B.">
+    <p>R.O.B.</p>
+  </a>
+  <a href="#" onclick="show('toon-link')" class="character-card">
+    <img src="ssbu/toon.png" alt="Toon Link">
+    <p>Toon Link</p>
+  </a>
+  <a href="#" onclick="show('wolf')" class="character-card">
+    <img src="ssbu/wolf.png" alt="Wolf">
+    <p>Wolf</p>
+  </a>
+  <a href="#" onclick="show('aldeano')" class="character-card">
+    <img src="ssbu/aldeano.png" alt="Aldeano">
+    <p>Aldeano</p>
+  </a>
+  <a href="#" onclick="show('mega-man')" class="character-card">
+    <img src="ssbu/mega.png" alt="Mega Man">
+    <p>Mega Man</p>
+  </a>
+  <a href="#" onclick="show('entrenadora-wii-fit')" class="character-card">
+    <img src="ssbu/wii.png" alt="Entrenadora Wii Fit">
+    <p>Entrenadora Wii Fit</p>
+  </a>
+  <a href="#" onclick="show('rosalina-and-luma')" class="character-card">
+    <img src="ssbu/luma.png" alt="Rosalina & Luma">
+    <p>Rosalina & Luma</p>
+  </a>
+  <a href="#" onclick="show('little-mac')" class="character-card">
+    <img src="ssbu/mac.png" alt="Little Mac">
+    <p>Little Mac</p>
+  </a>
+  <a href="#" onclick="show('greninja')" class="character-card">
+    <img src="ssbu/greninja.png" alt="Greninja">
+    <p>Greninja</p>
+  </a>
+  <a href="#" onclick="show('mii-brawler')" class="character-card">
+    <img src="ssbu/brawler.png" alt="Mii Brawler">
+    <p>Mii Brawler</p>
+  </a>
+  <a href="#" onclick="show('mii-swordfighter')" class="character-card">
+    <img src="ssbu/mii.png" alt="Mii Swordfighter">
+    <p>Mii Swordfighter</p>
+  </a>
+  <a href="#" onclick="show('mii-gunner')" class="character-card">
+    <img src="ssbu/gunner.png" alt="Mii Gunner">
+    <p>Mii Gunner</p>
+  </a>
+  <a href="#" onclick="show('palutena')" class="character-card">
+    <img src="ssbu/palutena.png" alt="Palutena">
+    <p>Palutena</p>
+  </a>
+  <a href="#" onclick="show('pac-man')" class="character-card">
+    <img src="ssbu/pac.png" alt="Pac-Man">
+    <p>Pac-Man</p>
+  </a>
+  <a href="#" onclick="show('robin')" class="character-card">
+    <img src="ssbu/robin.png" alt="Robin">
+    <p>Robin</p>
+  </a>
+  <a href="#" onclick="show('shulk')" class="character-card">
+    <img src="ssbu/shulk.png" alt="Shulk">
+    <p>Shulk</p>
+  </a>
+  <a href="#" onclick="show('bowser-jr.')" class="character-card">
+    <img src="ssbu/jr.png" alt="Bowser Jr.">
+    <p>Bowser Jr.</p>
+  </a>
+  <a href="#" onclick="show('duck-hunt')" class="character-card">
+    <img src="ssbu/duck.png" alt="Duck Hunt">
+    <p>Duck Hunt</p>
+  </a>
+  <a href="#" onclick="show('ryu')" class="character-card">
+    <img src="ssbu/ryu.png" alt="Ryu">
+    <p>Ryu</p>
+  </a>
+  <a href="#" onclick="show('ken')" class="character-card">
+    <img src="ssbu/ken.png" alt="Ken">
+    <p>Ken</p>
+  </a>
+  <a href="#" onclick="show('cloud')" class="character-card">
+    <img src="ssbu/cloud.png" alt="Cloud">
+    <p>Cloud</p>
+  </a>
+  <a href="#" onclick="show('corrin')" class="character-card">
+    <img src="ssbu/corrin.png" alt="Corrin">
+    <p>Corrin</p>
+  </a>
+  <a href="#" onclick="show('bayonetta')" class="character-card">
+    <img src="ssbu/bayonetta.png" alt="Bayonetta">
+    <p>Bayonetta</p>
+  </a>
+  <a href="#" onclick="show('inkling')" class="character-card">
+    <img src="ssbu/inkling.png" alt="Inkling">
+    <p>Inkling</p>
+  </a>
+  <a href="#" onclick="show('ridley')" class="character-card">
+    <img src="ssbu/ridley.png" alt="Ridley">
+    <p>Ridley</p>
+  </a>
+  <a href="#" onclick="show('simon')" class="character-card">
+    <img src="ssbu/simon.png" alt="Simon">
+    <p>Simon</p>
+  </a>
+  <a href="#" onclick="show('richter')" class="character-card">
+    <img src="ssbu/richter.png" alt="Richter">
+    <p>Richter</p>
+  </a>
+  <a href="#" onclick="show('rey-k.-rool')" class="character-card">
+    <img src="ssbu/rool.png" alt="Rey K. Rool">
+    <p>Rey K. Rool</p>
+  </a>
+  <a href="#" onclick="show('canela')" class="character-card">
+    <img src="ssbu/canela.png" alt="Canela">
+    <p>Canela</p>
+  </a>
+  <a href="#" onclick="show('incineroar')" class="character-card">
+    <img src="ssbu/incineroar.png" alt="Incineroar">
+    <p>Incineroar</p>
+  </a>
+  <a href="#" onclick="show('piranha-plant')" class="character-card">
+    <img src="ssbu/planta.png" alt="Piranha Plant">
+    <p>Piranha Plant</p>
+  </a>
+  <a href="#" onclick="show('joker')" class="character-card">
+    <img src="ssbu/joker.png" alt="Joker">
+    <p>Joker</p>
+  </a>
+  <a href="#" onclick="show('héroe')" class="character-card">
+    <img src="ssbu/hero.png" alt="Héroe">
+    <p>Héroe</p>
+  </a>
+  <a href="#" onclick="show('banjo-and-kazooie')" class="character-card">
+    <img src="ssbu/banjo.png" alt="Banjo & Kazooie">
+    <p>Banjo & Kazooie</p>
+  </a>
+  <a href="#" onclick="show('terry')" class="character-card">
+    <img src="ssbu/terry.png" alt="Terry">
+    <p>Terry</p>
+  </a>
+  <a href="#" onclick="show('byleth')" class="character-card">
+    <img src="ssbu/byleth.png" alt="Byleth">
+    <p>Byleth</p>
+  </a>
+  <a href="#" onclick="show('min-min')" class="character-card">
+    <img src="ssbu/min.png" alt="Min Min">
+    <p>Min Min</p>
+  </a>
+  <a href="#" onclick="show('steve')" class="character-card">
+    <img src="ssbu/steve.png" alt="Steve">
+    <p>Steve</p>
+  </a>
+  <a href="#" onclick="show('sephiroth')" class="character-card">
+     <img src="ssbu/sephiroth.png" alt="Sephiroth">
+    <p>Sephiroth</p>
+   <div class="character-card">
+  <a href="#" onclick="show('pyra-mythra')">
+    <img src="ssbu/pyra.png" alt="Pyra/Mythra">
+    <p>Pyra/Mythra</p>
+  </a>
+</div>
+
+<div class="character-card">
+  <a href="#" onclick="show('kazuya')">
+    <img src="ssbu/kazuya.png" alt="Kazuya">
+    <p>Kazuya</p>
+  </a>
+</div>
+
+<div class="character-card">
+  <a href="#" onclick="show('sora')">
+    <img src="ssbu/sora.png" alt="Sora">
+    <p>Sora</p>
+  </a>
+</div>
+
+</section>
+<section id="mario">
+  <h1>Mario probablemente sea el personaje más famoso de los videojuegos, por ende estar en SSBU es una señal de esencia</h1>
+
+  <article class="mod">
+    <p>
+      Mod 1: Este mod fue creado por Risette, Mister ManXander, Son of Xereus Viiper, Barack Obama e Hypernova 
+      y está basado en el modelo de SMW. Además trae consigo animaciones nuevas.  
+      Si te interesa este mod, descárgalo ahora:  
+      <a href="mods/mariow.7z" download>Descargar Mod 1</a>
+    </p>
+    <img src="SSBU/SSBUMA.jpg" alt="Imagen del Mod 1 de Mario" width="600" height="400">
+    <video controls>
+      <source src="SSBU/SMW.MP4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+
+  <article class="mod">
+    <p>
+      Mod 2: Este mod está basado en Mario 64, añadiendo expresiones y sonidos del juego (mod aparte).  
+      Descárgalo:  
+      <a href="mods/64.zip" download>Descargar Mod 2</a>
+    </p>
+    <img src="SSBU/M64.JPEG" alt="Imagen del Mod 2 de Mario" width="600" height="400">
+    <video controls>
+      <source src="SSBU/M64.MP4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+
+  <article class="mod">
+    <p>
+      Mod 3: Este mod cambia el aspecto normal de Mario por uno oscuro y malvado, con efectos rojos.  
+      Descárgalo:  
+      <a href="mods/dnied.zip" download>Descargar Mod 3</a>
+    </p>
+    <img src="SSBU/DARKM.JPEG" alt="Imagen del Mod 3 de Mario" width="600" height="400">
+    <video controls>
+      <source src="SSBU/DARKM.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+
+  <article class="mod">
+    <p>
+      Mod 4: Este mod está basado en Super Mario Wonder, incluyendo expresiones nuevas y la voz del juego.  
+      Descárgalo:  
+      <a href="mods/wonder.zip" download>Descargar Mod 4</a>
+    </p>
+    <img src="SSBU/WODER.JPEG" alt="Imagen del Mod 4 de Mario" width="600" height="400">
+    <video controls>
+      <source src="SSBU/WONDER.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+
+  <article class="mod">
+    <p>
+      Mod 5: Este mod está basado en Mario Sunshine, incluyendo F.L.L.U.D. y animación de victoria.  
+      Descárgalo:  
+      <a href="mods/sol.zip" download>Descargar Mod 5</a>
+    </p>
+    <img src="SSBU/SUN.JPEG" alt="Imagen del Mod 5 de Mario" width="600" height="400">
+    <video controls>
+      <source src="SSBU/SUN.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+<section id="donkey-kong">
+  <h1>Donkey Kong, el Gorila más famoso de los videojuegos, acompañando a Mario desde Donkey Kong de 1981 han estado juntos desde entonces</h1>
+
+  <article class="mod">
+    <p>
+      Mod 1: Creado por Superevan5 e inspirado en Dragon Ball Z.  
+      Muy popular por su originalidad y carisma.  
+      Descárgalo:  
+      <a href="mods/ssj.zip" download>Descargar Mod (.7z)</a>
+    </p>
+    <img src="SSBU/SSJ.JPEG" alt="Mod Super Saiyan DK" width="600" height="400">
+    <video controls>
+      <source src="SSBU/SSJ.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+
+  <article class="mod">
+    <p>
+      Mod 2: Creado por Anivernage y basado en Duke Nukem.  
+      Descárgalo:  
+      <a href="mods/dk_mod2.zip" download>Descargar Mod (.zip)</a>
+    </p>
+    <img src="SSBU/NUKE.JPEG" alt="Mod Duke Nukem DK" width="600" height="400">
+    <video controls>
+      <source src="SSBU/NUKE.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+
+  <article class="mod">
+    <p>
+      Mod 3: Creado por Anivernage y basado en DK Banana Goty, con nueva voz y remodelación.  
+      Descárgalo:  
+      <a href="mods/dk_mod3.7z" download>Descargar Mod (.7z)</a>
+    </p>
+    <img src="SSBU/BANA.JPEG" alt="Mod Banana DK" width="600" height="400">
+    <video controls>
+      <source src="SSBU/BANA.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+
+  <article class="mod">
+    <p>
+      Mod 4: Creado por BezBZ y basado en Funky Kong, con recolores y voz incluidos.  
+      Descárgalo:  
+      <a href="mods/funky.zip" download>Descargar Mod (.zip)</a>
+    </p>
+    <img src="SSBU/FUNK.JPEG" alt="Mod Funky Kong" width="600" height="400">
+    <video controls>
+      <source src="SSBU/FUNK.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+
+  <article class="mod">
+    <p>
+      Mod 5: Creado por DaRSM9, basado en Steve de Minecraft.  
+      Descárgalo:  
+      <a href="mods/bigsteve.zip" download>Descargar Mod (.7z)</a>
+    </p>
+    <img src="SSBU/STEVE.JPG" alt="Mod Steve DK" width="600" height="400">
+  </article>
+
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+<section id="link">
+  <h1>Mods de Link</h1>
+
+  <article class="mod">
+    <p>
+      Mod 1: Este mod fue creado por PinkFoot y está basado en cómo sería Link si fuese mujer, con animaciones, voz y expresiones nuevas.  
+      Si te interesa este mod, descárgalo aquí:  
+      <a href="mods/flink.zip" download>Descargar archivo ZIP</a>
+    </p>
+    <img src="SSBU/LINKY.JPG" alt="Mod 1 de Link" width="600" height="400">
+    <video controls>
+      <source src="SSBU/LINKY.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+
+  <article class="mod">
+    <p>
+      Mod 2: Creado por Monadoj, basado en el modelo de Link de BOTW, con su característico estilo visual.  
+      Si te interesa este mod, descárgalo aquí:  
+      <a href="mods/lbotw.zip" download>Descargar archivo ZIP</a>
+    </p>
+    <img src="SSBU/BOT.JPG" alt="Mod 2 de Link" width="600" height="400">
+  </article>
+
+  <article class="mod">
+    <p>
+      Mod 3: Creado por Walfou, basado en Steve de Jack Black (Minecraft). Cambia animaciones y herramientas de Link.  
+      Si te interesa este mod, descárgalo aquí:  
+      <a href="mods/listeve.zip" download>Descargar archivo ZIP</a>
+    </p>
+    <img src="SSBU/I.JPG" alt="Mod 3 de Link" width="600" height="400">
+  </article>
+
+  <article class="mod">
+    <p>
+      Mod 4: Creado por IncrediblePlays, basado en Link de TOTK, con colores nostálgicos.  
+      Si te interesa este mod, descárgalo aquí:  
+      <a href="mods/mod4-link.zip" download>Descargar archivo ZIP</a>
+    </p>
+    <img src="SSBU/TO.JPG" alt="Mod 4 de Link" width="600" height="400">
+  </article>
+
+  <article class="mod">
+    <p>
+      Mod 5: Creado por sqrta, basado en Zelda, con animaciones y voz completas.  
+      Si te interesa este mod, descárgalo aquí:  
+      <a href="mods/mod5-link.zip" download>Descargar archivo ZIP</a>
+    </p>
+    <img src="SSBU/ZELDA.JPG" alt="Mod 5 de Link" width="600" height="400">
+  </article>
+
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="samus">
+  <h1>Mods de Samus</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Este mod fue creado por AbcXyz y esta basada en los colores vaporwave, lo cual le quedan muy bien a samus Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="mods/neon_samus_v2" target="_blank">Link de descarga</a>
+     <img src="SSBU/NEON.JPG" alt="Imagen del Mod 1 de Samus" width="600" height="400">
+     <video controls>
+      <source src="SSBU/NEON.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p>
+  Mod 2: Este mod fue creado por AbcXyz y  esta creada con colores oscuros y brillantes que hacen buen juego con el personaje de Samus dandole un tono mas galactico y espacial, Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/chrome_samus.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/CRON.JPG" alt="Imagen del Mod 2 de Samus" width="600" height="400">  
+  </article>
+  <article class="mod">
+    <p>
+  Mod 3: Este mod fue creado por Arc Ray y esta basado en el traje de Samus de metroid prime, recolor NECESARIO para samus ya que esta genial, Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/pss.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/RED.JPG" alt="Imagen del Mod 3 de Samus" width="600" height="400"> 
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Pigeon Lunari el cual esta creado con colores muy fuertes, en esta caso el rojo, el cual le hace buena combinacion a Samus Aran, la hace ver fuerte e imponente , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/blood_samus.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/SANGRE.JPG" alt="Imagen del Mod 4 de Samus" width="600" height="400"> 
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por X9 Y definitivamente esta es la verdadera Samus Oscura, un color muy pero muy oscuro que la verdad se ve muy bien, Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/true_dark_samus (1).zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/DARKS.JPG" alt="Imagen del Mod 5 de Samus" width="600" height="400"> 
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="samus oscura">
+  <h1>Mods de Samus Oscura</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Rony21, Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/PUR.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/PUR.JPG" alt="Imagen del Mod 1 de Samus Oscura" width="600" height="400">  
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Dre 154 y esta basado en un estilo "pirata" de Dark Samus, la hace ver bien ya que a toques mas alienigenas y llamativos , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/PIRA.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/PIRA.JPG" alt="Imagen del Mod 2 de Samus Oscura" width="600" height="400"> 
+  </article>
+  <article class="mod">
+     <p>
+  Mod 3: Este mod fue creado por Dre 154 y esta inspirado en el modelo de Dark Samus de Metroid Prime y esta bien hecho lo cual genera una buena sensacion y nostalgia , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/PRIME12.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/PRIME12.JPG" alt="Imagen del Mod 3 de Samus Oscura" width="600" height="400">  
+  </article>
+  <article class="mod">
+    <p>
+  Mod 4: Este mod fue creado por X9 Y es igual al otro modelo oscuro de Samus solo que esta vez en Dark Samus , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/DARKDARK.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/DARKDARK.JPG" alt="Imagen del Mod 4 de Samus Oscura" width="600" height="400">  
+  </article>
+  <article class="mod">
+    <p>
+  Mod 5: Este mod fue creado por Abc Xyz y esta basado en los colores arcoiris metalicos lo cual la verdad se ve muy bien  , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/ELEC.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/ELEC.JPG" alt="Imagen del Mod 5 de Samus Oscura" width="600" height="400">  
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="yoshi">
+  <h1>Mods de Yoshi</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por BatedStudent que agraga un traje muy bonito a Yoshi hasta con sombrerito y bueno la verdad se le ve muy bonito y fresco , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/HOR.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/HOR.JPG" alt="Imagen del Mod 1 de Yoshi" width="600" height="400">  
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Extra 11 y esta basado en el modelo de Mario 64 y Super Smash Bros 64 lo cual la verdad e un lindo modelo de Yoshi , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/Y64.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/Y64.JPG" alt="Imagen del Mod 2 de Yoshi" width="600" height="400">  
+  </article>
+  <article class="mod">
+    <p>
+  Mod 3: Este mod fue creado por TamaYoshi y esta inspirado en el personaje de Boshi de Super Mario RPG lo cual es un persoanje interesante de ver , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/BOSHI.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/BOSHI.JPG" alt="Imagen del Mod 3 de Yoshi" width="600" height="400">  
+  </article>
+  <article class="mod">
+      <p>
+  Mod 4: Este mod fue creado por Aggawa y esta basado en un skin de Yoshi de Mrio Kart World y no te voy a mentir se ve bastante Fresco , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/WORLD.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/WORLD.JPG" alt="Imagen del Mod 4 de Yoshi" width="600" height="400">  
+  </article>
+  <article class="mod">
+    <p>
+  Mod 5: Este mod fue creado por batedstudent y esta basada en la colaboracion de Mincraft X Mario Bros y la verdad se ve bonito muy tierno y cuadradon  , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/MY.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/MY.JPG" alt="Imagen del Mod 5 de Yoshi" width="600" height="400">  
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="kirby">
+  <h1>Mods de Kirby</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Sombra y esta basado en la popular saga de videos de Something About Smash Bros, en este caso en el perosnaje de Kirby...Kirbo...TARAN, Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/WTF.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/WTF.JPG" alt="Imagen del Mod 1 de Kirby" width="600" height="400">  
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Purple Enjogers y esta basado en como seria kirby si fuese robot, simple y sencillo, Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/ROBOT.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/ROBOT.JPG" alt="Imagen del Mod 2 de Kirby" width="600" height="400">  
+  </article>
+  <article class="mod">
+     <p>
+  Mod 3: Este mod fue creado por jj314 Y esta inspirado en el enmigo de kirby...Marx..., Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/MARX.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/MARX.JPG" alt="Imagen del Mod 3 de Kirby" width="600" height="400">  
+  </article>
+  <article class="mod">
+      <p>
+  Mod 4: Este mod fue creado por jj314 y esta inspirado en un Waddle Dee acaso no es tierno? Es una cosita que sufren Bullyng por kirby, llego el momento de su venganza aunque no se si pueda hacerlo, Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/DEE.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/DEE.JPG" alt="Imagen del Mod 4 de Kirby" width="600" height="400">  
+  </article>
+  <article class="mod">
+    <p>
+  Mod 5: Este mod fue creado por Satana y esta modelado con colores lindos, bellos y pastelosos, sin dua de los mejores mods de la bolita rosa, Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/ROSITA.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/ROSITA.JPG" alt="Imagen del Mod 5 de Kirby" width="600" height="400">  
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="fox">
+  <h1>Mods de Fox</h1>
+  <article class="mod">
+     <p>
+  Mod 1: Este mod fue creado por GummyWorms el cual le pone el pelaje a Fox muy bonito color nieve, el cual hay que admitir esta bonito , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/BLANQUITO.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/BLANQUITO.JPG" alt="Imagen del Mod 1 de Fox" width="600" height="400">  
+  </article>
+  <article class="mod">
+    <p>
+  Mod 2: Este mod fue creado por Altair el cual esta basado en los colores Vaporwave lo cual le quedan muy bien al Zorro de Nintendo, Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/FOXN.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/FOXN.JPG" alt="Imagen del Mod 2 de Fox" width="600" height="400">  
+  </article>
+  <article class="mod">
+     <p>
+  Mod 3: Este mod fue creado por JamesInGames el cual creo que esta inspirado en terminator pero pues se ve facha , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/FOXXX.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/FOXXX.JPG" alt="Imagen del Mod 3 de Fox" width="600" height="400">  
+  </article>
+  <article class="mod">
+    <p>
+  Mod 4: Este mod fue creado por Hero Zero y esta basado en el personaje tambien de Star Fox slippy y sin mas es una rana poco empatica , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/SAPOCULERO.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/SAPOCULERO.JPG" alt="Imagen del Mod 4 de Fox" width="600" height="400">  
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por  MATT y esta basado en el amigo de Sonic, Tails  , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/TAL.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/TAL.JPG" alt="Imagen del Mod 5 de Fox" width="600" height="400">  
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="pikachu">
+  <h1>Mods de Pikachu</h1>
+  <article class="mod">
+      <p>
+  Mod 1: Este mod fue creado por Extra211 y esta basado en el modelo guaton y gordo de pikachu de Super Smash Bros 64 , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/P64.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/P64.JPG" alt="Imagen del Mod 1 de Pikachu" width="600" height="400">
+<article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Nokorio y me recuerda a cierto punto a Hiraya pero bueno esta bonito, tiene buen trajecito y buenas expresiones , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/ROCK.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/ROCK.JPG" alt="Imagen del Mod 2 de Pikachu" width="600" height="400">  
+  </article>
+  <article class="mod">
+     <p>
+  Mod 3: Este mod fue creado por DEVORY y bueno milagro que no es algo japones, si no pikachu con pija , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/PAJAMAN.zip" target="_blank">descargalo</a>
+     <img src="SSBU/PAJAMAN.JPG" alt="Imagen del Mod 3 de Pikachu" width="600" height="400">  
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Nekorio y esta basado en el perosanje de Deadpool y adivina como se llama el Mod...Pikachu Deadpool...es el mejor nombre de la vida  , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/DEAD.zip" target="_blank">descargalo</a>
+     <img src="SSBU/DEAD.JPG" alt="Imagen del Mod 4 de Pikachu" width="600" height="400">  
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por s8mf y esta basada en no se, pero hace parecer a pikachu muy femenina jajaja  , Si te interesa este mod, descárgalo ahora abriendo este enlace:  
+  <a href="SSBU/WTF2.zip" target="_blank">Link de descarga</a>
+     <img src="SSBU/WTF2.JPG" alt="Imagen del Mod 5 de Pikachu" width="600" height="400">  
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="luigi">
+  <h1>Mods de Luigi</h1>
+  <article class="mod">
+    <p>
+      Mod 1: Este mod fue creado por Calvin y está muy divertido para Luigi.  
+      <a href="mods/Luigi_Mod1.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/KK.JPG" alt="Imagen del Mod 1 de Luigi" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 2: Este mod fue creado por Tony, elegante y muy chido.  
+      <a href="mods/Luigi_Mod2.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/MAFIA.JPG" alt="Imagen del Mod 2 de Luigi" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 3: Este mod fue creado por Sombra, Luigi Lego.  
+      <a href="mods/Luigi_Mod3.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/LEGOL.JPG" alt="Imagen del Mod 3 de Luigi" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 4: Este mod fue creado por LuigiKid64, incluye a Luigi 64 y MrL 64.  
+      <a href="mods/Luigi_Mod4.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/L64.JPG" alt="Imagen del Mod 4 de Luigi" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 5: Este mod fue creado por Devory, estilo casual inspirado en Tyler The Creator.  
+      <a href="mods/Luigi_Mod5.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/TYLER.JPG" alt="Imagen del Mod 5 de Luigi" width="600" height="400">
+    </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="ness">
+  <h1>Mods de Ness</h1>
+  <article class="mod">
+    <p>
+      Mod 1: Creado por Purple Enjoyers, basado en Link cosplay.  
+      <a href="mods/Ness_Mod1.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/NL.JPG" alt="Imagen del Mod 1 de Ness" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 2: Creado por AtomicWorks, inspirado en TED.  
+      <a href="mods/Ness_Mod2.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/TED.JPG" alt="Imagen del Mod 2 de Ness" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 3: Creado por IronKnucles, basado en Magneto con armadura.  
+      <a href="mods/Ness_Mod3.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/MAG.JPG" alt="Imagen del Mod 3 de Ness" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 4: Creado por Devory, Ness elegante con traje.  
+      <a href="mods/Ness_Mod4.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/SUIT.JPG" alt="Imagen del Mod 4 de Ness" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 5: Creado por Dunk Man, inspirado en Mario.  
+      <a href="mods/Ness_Mod5.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/MUSH.JPG" alt="Imagen del Mod 5 de Ness" width="600" height="400">
+    </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="captain-falcon">
+  <h1>Mods de Captain Falcon</h1>
+  <article class="mod">
+    <p>
+      Mod 1: Creado por DXS8, basado en Shaggy.  
+      <a href="mods/CaptainFalcon_Mod1.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/SHAGGY.WEBP" alt="Imagen del Mod 1 de Captain Falcon" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 2: Creado por Sean B, Captain Falcon con afro.  
+      <a href="mods/CaptainFalcon_Mod2.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/AFRO.JPG" alt="Imagen del Mod 2 de Captain Falcon" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 3: Creado por Hype Studio, basado en Vegito.  
+      <a href="mods/CaptainFalcon_Mod3.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/VEGITO.JPG" alt="Imagen del Mod 3 de Captain Falcon" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 4: Creado por Vindy COT, basado en Frozone/Pongan Bachata.  
+      <a href="mods/CaptainFalcon_Mod4.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/LUCIO.JPG" alt="Imagen del Mod 4 de Captain Falcon" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 5: Creado por Thing, basado en el policía de Lluvia de Hamburguesas.  
+      <a href="mods/CaptainFalcon_Mod5.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/POLI.JPG" alt="Imagen del Mod 5 de Captain Falcon" width="600" height="400">
+    </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="jigglypuff">
+  <h1>Mods de Jigglypuff</h1>
+  <article class="mod">
+    <p>
+      Mod 1: Creado por WomboCombo38, basado en Ms. Puff de Bob Esponja.  
+      <a href="mods/Jigglypuff_Mod1.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/PUF.JPG" alt="Imagen del Mod 1 de Jigglypuff" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 2: Creado por Innner Mubies, basado en Boo de Mario Bros.  
+      <a href="mods/Jigglypuff_Mod2.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/BOO.JPG" alt="Imagen del Mod 2 de Jigglypuff" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 3: Creado por HAPPY, basado en Bob-omb de Mario Bros.  
+      <a href="mods/Jigglypuff_Mod3.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/BOB.JPG" alt="Imagen del Mod 3 de Jigglypuff" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 4: Creado por Momotsuki, Purin arcoiris.  
+      <a href="mods/Jigglypuff_Mod4.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/RAIN.JPG" alt="Imagen del Mod 4 de Jigglypuff" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 5: Creado por Cyrano, Purin con sombrerito morado.  
+      <a href="mods/Jigglypuff_Mod5.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/PURPUF.JPG" alt="Imagen del Mod 5 de Jigglypuff" width="600" height="400">
+    </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="peach">
+  <h1>Mods de Peach</h1>
+  <article class="mod">
+    <p>
+      Mod 1: Creado por ELITE, basado en Peach Show Time y Mario Odyssey.  
+      <a href="mods/Peach_Mod1.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/EX.JPG" alt="Imagen del Mod 1 de Peach" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 2: Creado por CHOKER, Peach con espadita.  
+      <a href="mods/Peach_Mod2.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/ESPADA.JPG" alt="Imagen del Mod 2 de Peach" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 3: Creado por Squid, Peach con super corona (Bowsette).  
+      <a href="mods/Peach_Mod3.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/BOW.JPG" alt="Imagen del Mod 3 de Peach" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 4: Creado por Skanty, Peach Oscura.  
+      <a href="mods/Peach_Mod4.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/SHADOW.JPG" alt="Imagen del Mod 4 de Peach" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 5: Creado por LuckyJero, cosplay Bayonetta Peach.  
+      <a href="mods/Peach_Mod5.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/BAYOPEACH.JPG" alt="Imagen del Mod 5 de Peach" width="600" height="400">
+    </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="daisy">
+  <h1>Mods de Daisy</h1>
+  <article class="mod">
+    <p>
+      Mod 1: Creado por JJ314, basado en Street Fighter Sakura.  
+      <a href="mods/Daisy_Mod1.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/SAKURA.JPG" alt="Imagen del Mod 1 de Daisy" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 2: Creado por LuigiKid64, uniforme Mario Striker.  
+      <a href="mods/Daisy_Mod2.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/STRIKE.JPG" alt="Imagen del Mod 2 de Daisy" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 3: Creado por CHOKER, Daisy detective.  
+      <a href="mods/Daisy_Mod3.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/DETECTIVE.JPG" alt="Imagen del Mod 3 de Daisy" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 4: Creado por Secretaire, vestido bodas Peach.  
+      <a href="mods/Daisy_Mod4.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/WEED.JPG" alt="Imagen del Mod 4 de Daisy" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 5: Creado por HANX, uniforme Mario Golf.  
+      <a href="mods/Daisy_Mod5.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/GOLF.JPG" alt="Imagen del Mod 5 de Daisy" width="600" height="400">
+    </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="bowser">
+  <h1>Mods de Bowser</h1>
+  <article class="mod">
+    <p>
+      Mod 1: Creado por UserBouy, Bowser Mario Kart World.  
+      <a href="mods/Bowser_Mod1.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/BIKER.JPG" alt="Imagen del Mod 1 de Bowser" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 2: Creado por Chasical, Mario 3D Land Bowser.  
+      <a href="mods/Bowser_Mod2.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/FURY.JPG" alt="Imagen del Mod 2 de Bowser" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 3: Creado por Jedizom, Bowser clásico de Mario.  
+      <a href="mods/Bowser_Mod3.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/KOOPA.JPG" alt="Imagen del Mod 3 de Bowser" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 4: Creado por BatedStudent, Giga Bowser.  
+      <a href="mods/Bowser_Mod4.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/GIGA.JPG" alt="Imagen del Mod 4 de Bowser" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 5: Creado por LN310, Bowser Odyssey traje boda.  
+      <a href="mods/Bowser_Mod5.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/BODA.JPG" alt="Imagen del Mod 5 de Bowser" width="600" height="400">
+    </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="ice-climbers">
+  <h1>Mods de Ice Climbers</h1>
+  <article class="mod">
+    <p>
+      Mod 1: Creado por JJ314, Toad y Toadette.  
+      <a href="mods/IceClimbers_Mod1.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/TOADS.JPG" alt="Imagen del Mod 1 de Ice Climbers" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 2: Creado por Yoster, 8-bit Ice Climbers.  
+      <a href="mods/IceClimbers_Mod2.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/8ICE.JPG" alt="Imagen del Mod 2 de Ice Climbers" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 3: Creado por Superevan 5, dúo dinámico Daft Punk.  
+      <a href="mods/IceClimbers_Mod3.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/DAFT.JPG" alt="Imagen del Mod 3 de Ice Climbers" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 4: Creado por Sayorisock, Bob Esponja y Patricio.  
+      <a href="mods/IceClimbers_Mod4.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/CALAMARDO.JPG" alt="Imagen del Mod 4 de Ice Climbers" width="600" height="400">
+    </p>
+  </article>
+  <article class="mod">
+    <p>
+      Mod 5: Creado por Purple Enjoyers, conejitos.  
+      <a href="mods/IceClimbers_Mod5.zip" download>Descárgalo ahora</a>
+      <img src="SSBU/CO.JPG" alt="Imagen del Mod 5 de Ice Climbers  width="600" height="400">
+    </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+
+<section id="sheik">
+  <h1>Mods de Sheik</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Augustus y es un recolor de un anime a colores oscuros. Descárgalo ahora en zip:  
+  <a href="mods/Sheik_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/SN.JPG" alt="Imagen del Mod 1 de Sheik" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Dusk y está basado en Spider Gwen de SpiderMan. Descárgalo ahora en zip:  
+  <a href="mods/Sheik_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/SG.JPG" alt="Imagen del Mod 2 de Sheik" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por DXS8 y está basado en Ibuki de un juego de peleas. Descárgalo ahora en zip:  
+  <a href="mods/Sheik_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/DAFT.JPG" alt="Imagen del Mod 3 de Sheik" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Gokussj y está basado en Androide 18 de Dragon Ball Z. Descárgalo ahora en zip:  
+  <a href="mods/Sheik_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/18.JPG" alt="Imagen del Mod 4 de Sheik" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Dusk y está basado en Sophie, se ve muy chida. Descárgalo ahora en zip:  
+  <a href="mods/Sheik_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/SOPA.JPG" alt="Imagen del Mod 5 de Sheik" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="zelda">
+  <h1>Mods de Zelda</h1>
+  <article class="mod">
+     <p>
+  Mod 1: Creado por Kewra, colores bonitos y coloridos. Descárgalo ahora en zip:  
+  <a href="mods/Zelda_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/ZR.JPG" alt="Imagen del Mod 1 de Zelda" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Creado por DEVORY, estilo festival. Descárgalo ahora en zip:  
+  <a href="mods/Zelda_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/FES.JPG" alt="Imagen del Mod 2 de Zelda" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Creado por Daniel28, basado en Pauline. Descárgalo ahora en zip:  
+  <a href="mods/Zelda_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/PAU.JPG" alt="Imagen del Mod 3 de Zelda" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Creado por DEVORY, Zelda con pijama. Descárgalo ahora en zip:  
+  <a href="mods/Zelda_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/ZRATA.JPG" alt="Imagen del Mod 4 de Zelda" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Creado por Sorangar, estilo Ganondorf. Descárgalo ahora en zip:  
+  <a href="mods/Zelda_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/GZ.JPG" alt="Imagen del Mod 5 de Zelda" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="dr-mario">
+  <h1>Mods de Dr. Mario</h1>
+  <article class="mod">
+  <p>
+  Mod 1: Creado por S77, basado en Crash Bandicoot con animaciones, música y voz nueva. Descárgalo ahora en zip:  
+  <a href="mods/DrMario_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/CRASH.JPG" alt="Imagen del Mod 1 de Dr. Mario" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Creado por LN310, basado en Injustice 2. Descárgalo ahora en zip:  
+  <a href="mods/DrMario_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/FATE.JPG" alt="Imagen del Mod 2 de Dr. Mario" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Creado por DEVORY, modelo antiguo de Dr. Mario. Descárgalo ahora en zip:  
+  <a href="mods/DrMario_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/TIME.JPG" alt="Imagen del Mod 3 de Dr. Mario" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Creado por LN310, traje de científico de Mario Odyssey. Descárgalo ahora en zip:  
+  <a href="mods/DrMario_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/CIEN.JPG" alt="Imagen del Mod 4 de Dr. Mario" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Creado por Purple Enjoyers, skin de Mario Odyssey. Descárgalo ahora en zip:  
+  <a href="mods/DrMario_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/HAKA.JPG" alt="Imagen del Mod 5 de Dr. Mario" width="600" height="400">
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="pichu">
+  <h1>Mods de Pichu</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Creado por DEVORY, basado en Pichu con traje. Descárgalo en zip:  
+  <a href="mods/Pichu_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/TUXE.JPG" alt="Imagen del Mod 1 de Pichu" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Creado por DinnerTimeBruh, inspirado en un arcoíris. Descárgalo en zip:  
+  <a href="mods/Pichu_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/BOWP.JPG" alt="Imagen del Mod 2 de Pichu" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Creado por Purple Enjoyers, inspirado en Gir de Invasion Zim. Descárgalo en zip:  
+  <a href="mods/Pichu_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/GIR.JPG" alt="Imagen del Mod 3 de Pichu" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Creado por LN310, basado en Sayu de Genshin Impact. Descárgalo en zip:  
+  <a href="mods/Pichu_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/SAYU.JPG" alt="Imagen del Mod 4 de Pichu" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Creado por Nekorio, inspirado en Cyberpunk (solo chaqueta). Descárgalo en zip:  
+  <a href="mods/Pichu_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/PUNK.JPG" alt="Imagen del Mod 5 de Pichu" width="600" height="400">
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="falco">
+  <h1>Mods de Falco</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Creado por Polinym, basado en Tux el pingüino. Descárgalo en zip:  
+  <a href="mods/Falco_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/TUX.JPG" alt="Imagen del Mod 1 de Falco" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Creado por Thunder, inspirado en Jet de Sonic. Descárgalo en zip:  
+  <a href="mods/Falco_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/JET.JPG" alt="Imagen del Mod 2 de Falco" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Creado por Akailiko, inspirado en Falco F1. Descárgalo en zip:  
+  <a href="mods/Falco_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/REDY.JPG" alt="Imagen del Mod 3 de Falco" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Creado por Hero Zero, basado en Peppy de StarFox. Descárgalo en zip:  
+  <a href="mods/Falco_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/PEPPY.JPG" alt="Imagen del Mod 4 de Falco" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Creado por Falco des, inspirado en Capitán Falcon. Descárgalo en zip:  
+  <a href="mods/Falco_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/CF.JPG" alt="Imagen del Mod 5 de Falco" width="600" height="400">
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="marth">
+  <h1>Mods de Marth</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Creado por Arx Marx, inspirado en Tails Caballero. Descárgalo en zip:  
+  <a href="mods/Marth_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/VAVLI.JPG" alt="Imagen del Mod 1 de Marth" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Creado por Seeker 340, inspirado en el papa de las Chicas Superpoderosas. Descárgalo en zip:  
+  <a href="mods/Marth_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/SAMU.JPG" alt="Imagen del Mod 2 de Marth" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Creado por StupidShort, inspirado en un personaje animado espachín. Descárgalo en zip:  
+  <a href="mods/Marth_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/SC.JPG" alt="Imagen del Mod 3 de Marth" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Creado por SUPEREVAN5, inspirado en Fancy Pantalones (videojuego flash). Descárgalo en zip:  
+  <a href="mods/Marth_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/FANCY.JPG" alt="Imagen del Mod 4 de Marth" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Creado por Lange Leader, inspirado en Marth como guerrero Ranger. Descárgalo en zip:  
+  <a href="mods/Marth_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/HAKA.JPG" alt="Imagen del Mod 5 de Marth" width="600" height="400">
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="lucina">
+  <h1>Mods de Lucina</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Creado por SUPEREVAN5, basado en Costal de Fortnite. Descárgalo en zip:  
+  <a href="mods/Lucina_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/FOR.JPG" alt="Imagen del Mod 1 de Lucina" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Creado por LN310, modelo Chomps. Descárgalo en zip:  
+  <a href="mods/Lucina_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/CHO.JPG" alt="Imagen del Mod 2 de Lucina" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Creado por Thunder, Percival caballero femenino. Descárgalo en zip:  
+  <a href="mods/Lucina_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/SIR.JPG" alt="Imagen del Mod 3 de Lucina" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Creado por Hanx, saga Estrellas Guardianes. Descárgalo en zip:  
+  <a href="mods/Lucina_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/GUA.JPG" alt="Imagen del Mod 4 de Lucina" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Creado por Regen 06, basado en Namine. Descárgalo en zip:  
+  <a href="mods/Lucina_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/NAMI.JPG" alt="Imagen del Mod 5 de Lucina" width="600" height="400">
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="young-link">
+  <h1>Mods de Young Link</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Creado por LONK???, estilo Twilight Princess. Descárgalo en zip:  
+  <a href="mods/YoungLink_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/TWI.JPG" alt="Imagen del Mod 1 de Young Link" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Creado por LONK???, estilo Majora’s Mask (N64). Descárgalo en zip:  
+  <a href="mods/YoungLink_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/YL64.JPG" alt="Imagen del Mod 2 de Young Link" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Creado por TheJ2K, modelo imaginario y colorido. Descárgalo en zip:  
+  <a href="mods/YoungLink_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/DRE.JPG" alt="Imagen del Mod 3 de Young Link" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Creado por GrayX, Majora’s Mask HD. Descárgalo en zip:  
+  <a href="mods/YoungLink_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/MASK.JPG" alt="Imagen del Mod 4 de Young Link" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Creado por ILRG0, recolor 4 de Link. Descárgalo en zip:  
+  <a href="mods/YoungLink_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/DEI.JPG" alt="Imagen del Mod 5 de Young Link" width="600" height="400">
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="ganondorf">
+  <h1>Mods de Ganondorf</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Creado por SuperSucd, basado en la vaca de Mario Kart World. Descárgalo en zip:  
+  <a href="mods/Ganondorf_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/MOO.JPG" alt="Imagen del Mod 1 de Ganondorf" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Creado por Thunder, Glamrock Freddy FNAF. Descárgalo en zip:  
+  <a href="mods/Ganondorf_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/GLAM.JPG" alt="Imagen del Mod 2 de Ganondorf" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Creado por HEXCITER, recolores blanco y oscuro. Descárgalo en zip:  
+  <a href="mods/Ganondorf_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/BWG.JPG" alt="Imagen del Mod 3 de Ganondorf" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Creado por equipo, pack completo de Ganon. Descárgalo en zip:  
+  <a href="mods/Ganondorf_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/FAZ.JPG" alt="Imagen del Mod 4 de Ganondorf" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Creado por ZRK, TOTK + 7 recolores y voz. Descárgalo en zip:  
+  <a href="mods/Ganondorf_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/TOTK.JPG" alt="Imagen del Mod 5 de Ganondorf" width="600" height="400">   
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="mewtwo">
+  <h1>Mods de Mewtwo</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Exero y esta inspirado en el personaje de Sonic...Infinite. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Mewtwo_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/INF.JPG" alt="Imagen del Mod 1 de Mewtwo" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Phobiacs y esta basado en como seria MewTwo pero en huesitos, seria un buen disfraz de Halloween. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Mewtwo_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/ESK.JPG" alt="Imagen del Mod 2 de Mewtwo" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Purple Enjoyers y esta inspirado en como seria MewTwo fusionado con Giratina. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Mewtwo_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/GIRA.JPG" alt="Imagen del Mod 3 de Mewtwo" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Danko y esta basado en Pokemon Unite y en esta caso el Lord...Seria MewTwo. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Mewtwo_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/DL.JPG" alt="Imagen del Mod 4 de Mewtwo" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por ColdPizza y esta basada en Project M y es Mewtwo con armadura imponente. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Mewtwo_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/PM.JPG" alt="Imagen del Mod 5 de Mewtwo" width="600" height="400">   </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="roy">
+  <h1>Mods de Roy</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Este mod fue creado por The Smash Bros hy y esta basada en el personaje del juego móvil de Supercell, Amber, que incluye voz, animación y un nuevo CSS. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Roy_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/AMBER.JPG" alt="Imagen del Mod 1 de Roy" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por CatyPoo y esta basado en Roy obsidiana, es decir un traje formal o más bien una armadura formal. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Roy_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/ROT.JPG" alt="Imagen del Mod 2 de Roy" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Thunder y esta basado en Sir Lancelor, es decir Shadow con Armadura. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Roy_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/LAN.JPG" alt="Imagen del Mod 3 de Roy" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Rohan y esta inspirado en los colores vaporwave o mandala y la verdad esta bonito y vistoso. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Roy_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/KD.JPG" alt="Imagen del Mod 4 de Roy" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por grecy y esta basado en Freddy Kruger. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Roy_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/KRU.JPG" alt="Imagen del Mod 5 de Roy" width="600" height="400">   </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="chrom">
+  <h1>Mods de Chrom</h1>
+  <article class="mod">
+<p>
+  Mod 1: Este mod fue creado por Naru y esta inspirado en el personaje de videojuegos Naruhodo el cual trae voz y recolores. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Chrom_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/NARU.JPG" alt="Imagen del Mod 1 de Chrom" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por LN310 y esta inspirado en como Chrom sería si usara un traje más formal y real. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Chrom_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/ROYAL.JPG" alt="Imagen del Mod 2 de Chrom" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Hanz y esta inspirada en como sería Chrom con pijama tierna. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Chrom_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/SE.JPG" alt="Imagen del Mod 3 de Chrom" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por LN310 y esta basado en el personaje de Marvel Moon Knight sin mucho que decir la verdad. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Chrom_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/MOON.JPG" alt="Imagen del Mod 4 de Chrom" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por BUDSMITH y es un recolor y la verdad se ve muy vistoso y divertido. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Chrom_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/NEX.JPG" alt="Imagen del Mod 5 de Chrom" width="600" height="400"> 
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="mr.-game-and-watch">
+  <h1>Mods de Mr. Game & Watch</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Este mod fue creado por Wieland y esta inspirada en el cosmos, así que Mr.Game tendrá un modelo muy cósmico y lindo. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/MrGame_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/GALA.JPG" alt="Imagen del Mod 1 de Mr. Game & Watch" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Jedizom y esta basado en Ms. Game & Watch, con animaciones únicas y bonitas idénticas a Mr.Game. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/MrGame_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/MS.JPG" alt="Imagen del Mod 2 de Mr. Game & Watch" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por StupidRingWorm. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/MrGame_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/ARC.JPG" alt="Imagen del Mod 3 de Mr. Game & Watch" width="600" height="400"> </article> 
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por MarronRed y esta inspirado en los colores de los arcoiris lo cual queda muy lindo. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/MrGame_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/MRR.JPG" alt="Imagen del Mod 4 de Mr. Game & Watch" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por SpacialTriangle y esta basado en Scott Cawtown, el creador de FNAF. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/MrGame_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/FNAF.JPG" alt="Imagen del Mod 5 de Mr. Game & Watch" width="600" height="400"> 
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="meta-knight">
+  <h1>Mods de Meta Knight</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Este mod fue creado por Polinym y esta inspirado en Morpho Knight de Kirby y la tierra olvidada. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/MetaKnight_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/MOR.JPG" alt="Imagen del Mod 1 de Meta Knight" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por BadGuy y esta basado en Hollow Knight. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/MetaKnight_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/HOL.JPG" alt="Imagen del Mod 2 de Meta Knight" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Emerald20x y esta inspirado en BATMAN, pero claro que es Meta Knight. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/MetaKnight_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/BK.JPG" alt="Imagen del Mod 3 de Meta Knight" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Nichirin y esta basado en los adorables y lindos Waddle Dee, están bien tiernos, bonitos y bellos. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/MetaKnight_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/BANDANA.JPG" alt="Imagen del Mod 4 de Meta Knight" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Sonicgamer y es un recolor muy bonito de Meta Knight azul y negro, que chido. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/MetaKnight_Mod5.zip" download>Descargar ahora</a>
+     <img src="BKN/BBB.JPG" alt="Imagen del Mod 5 de Meta Knight" width="600" height="400"> 
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="pit">
+  <h1>Mods de Pit</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Iron y esta basado en el dios de la guerra Gratos de God Of War, aunque la verdad no le queda muy bien por la voz de Pit. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Pit_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/GOD.JPG" alt="Imagen del Mod 1 de Pit" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Xecho y esta basado en Rouge The Bat del mundo de Sonic, el cual trae expresiones y voz. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Pit_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/YL64.JPG" alt="Imagen del Mod 2 de Pit" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Cybertron y esta basado en Ganyu, personaje femenino de Genshin Impact. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Pit_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/GAN.JPG" alt="Imagen del Mod 3 de Pit" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Pictochat y es un recolor de Pit que está muchísimo mejor de lo que tiene en el juego. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Pit_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/CY.JPG" alt="Imagen del Mod 4 de Pit" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Hanx y esta basado en la saga de skins, Estrellas Guardianes, lo cual le queda bien. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Pit_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/PITY.JPG" alt="Imagen del Mod 5 de Pit" width="600" height="400"> 
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="dark-pit">
+  <h1>Mods de Dark Pit</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por WomboKombo y esta inspirado en Batman de las Animaciones. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/DarkPit_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/BATY.JPG" alt="Imagen del Mod 1 de Dark Pit" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por CYRANO y es un recolor de Dark Pit con colores blanco y negro, se ve muy bien. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/DarkPit_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/A.JPG" alt="Imagen del Mod 2 de Dark Pit" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Elevan y es un recolor de Dark Pit color plateado, el cual le queda muy bien. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/DarkPit_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/GAN.JPG" alt="Imagen del Mod 3 de Dark Pit" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Cyrano y es un recolor Dark Pit color fuego, el cual también queda muy bien. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/DarkPit_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/CY.JPG" alt="Imagen del Mod 4 de Dark Pit" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Sketchy y esta basado en Día de Muertos, una fecha próxima, así que se ve llamativo y perfecto para la ocasión. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/DarkPit_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/DIA.JPG" alt="Imagen del Mod 5 de Dark Pit" width="600" height="400">   </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="zero-suit-samus">
+  <h1>Mods de Zero Suit Samus</h1>
+  <article class="mod">
+     <p>
+  Mod 1: Este mod fue creado por LN310 y está basado en Overwatch. Está muy bien hecho, tiene expresiones, voz y se ve bonita. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ZeroSuitSamus_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/OVE.JPG" alt="Imagen del Mod 1 de Zero Suit Samus" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por LN310 y son recolores y remodelados de las skins de Z.S. Samus, con colores diferentes que quedan muy bien. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ZeroSuitSamus_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/0.JPG" alt="Imagen del Mod 2 de Zero Suit Samus" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Hanx y está inspirado en la saga de Skins Crime CITY. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ZeroSuitSamus_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/CRI.JPG" alt="Imagen del Mod 3 de Zero Suit Samus" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Hanx y está inspirado en Arcadia, un traje casual para Samus. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ZeroSuitSamus_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/ARCS.JPG" alt="Imagen del Mod 4 de Zero Suit Samus" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Kewra y está inspirado en Dark Samus, llamativo con colores increíbles. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ZeroSuitSamus_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/DZ.JPG" alt="Imagen del Mod 5 de Zero Suit Samus" width="600" height="400">   </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="wario">
+  <h1>Mods de Wario</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Mastakio y está inspirado en el uniforme de Wario en la saga de juegos de Mario Tennis. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Wario_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/WG.JPG" alt="Imagen del Mod 1 de Wario" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por A thing y está basado en el minero de PVZ, se ve muy bien. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Wario_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/MINE.JPG" alt="Imagen del Mod 2 de Wario" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Daniel y está basado en el Gran Crash Bandicoot. Sin embargo, me quedo con el mod de Dr. Mario, pero este se ve un poquito más fiel al Crash viejito, lo cual también lo hace increíble. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Wario_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/ABO.JPG" alt="Imagen del Mod 3 de Wario" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por BRYDRAW y está inspirado en Do y Know ta wave. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Wario_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/DOYO.JPG" alt="Imagen del Mod 4 de Wario" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por WATAPASCUL y está inspirado en el modelo de Wario de Mario 64 DS. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Wario_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/W64.JPG" alt="Imagen del Mod 5 de Wario" width="600" height="400">   </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="snake">
+  <h1>Mods de Snake</h1>
+  <article class="mod">
+     <p>
+  Mod 1: Este mod fue creado por DEVORY y está inspirado en ropa casual para el gran Snake. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Snake_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/TAS.JPG" alt="Imagen del Mod 1 de Snake" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Purple Enjoyers y está inspirado en Deadpool. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Snake_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/DE.JPG" alt="Imagen del Mod 2 de Snake" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por IN000 y está inspirado en el famoso personaje del juego de terror Resident Evil… ¡LEON! Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Snake_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/LEON.JPG" alt="Imagen del Mod 3 de Snake" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por DEVORY y está inspirado en el modelo de Brawl de Snake, más realista y detallado. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Snake_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/BRAWL.JPG" alt="Imagen del Mod 4 de Snake" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por DIEGOFUN y está inspirado en el famosísimo CJ de GTA, increíble. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Snake_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/CJ.JPG" alt="Imagen del Mod 5 de Snake" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="ike">
+  <h1>Mods de Ike</h1>
+  <article class="mod">
+     <p>
+  Mod 1: Este mod fue creado por ArxMarx y está inspirado en Sir Gawin, es decir, Knuckles Caballero. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Ike_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/GA.JPG" alt="Imagen del Mod 1 de Ike" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Shun One y es un recolor de Ike, más colorido y bonito. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Ike_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/RA.JPG" alt="Imagen del Mod 2 de Ike" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Cyrano y es un recolor morado de Ike, bonito y llamativo. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Ike_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/PU.JPG" alt="Imagen del Mod 3 de Ike" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Blaze y es un traje casual, simple y efectivo para Ike. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Ike_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/JU.JPG" alt="Imagen del Mod 4 de Ike" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Mastakio y está inspirado en Jonathan de JoJo’s, una skin muy chida. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Ike_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/JON.JPG" alt="Imagen del Mod 5 de Ike" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="entrenador-pokémon">
+  <h1>Mods de Entrenador Pokémon</h1>
+  <article class="mod">
+     <p>
+  Mod 1: Este mod fue creado por Vaporwave y está inspirado en Lyra de Pokémon, queda muy bien. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/EntrenadorMod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/LY.JPG" alt="Imagen del Mod 1 de Entrenador Pokémon" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Ko Fi y está basado en Piplup, muy tierno y bonito. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/EntrenadorMod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/POL.JPG" alt="Imagen del Mod 2 de Entrenador Pokémon" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por INNER y bueno, parece un guiño por parte de SSBU al no incluir a Ash en el juego. Aquí lo tienes. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/EntrenadorMod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/ASH.JPG" alt="Imagen del Mod 3 de Entrenador Pokémon" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por MrSneaky, increíble porque tanto el entrenador como los Pokémon parecen personajes de Minecraft, muy hermoso. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/EntrenadorMod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/MP.JPG" alt="Imagen del Mod 4 de Entrenador Pokémon" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por LN310 y está inspirado en entrenadoras con vestido elegante. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/EntrenadorMod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/VE.JPG" alt="Imagen del Mod 5 de Entrenador Pokémon" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="diddy-kong">
+  <h1>Mods de Diddy Kong</h1>
+  <article class="mod">
+     <p>
+  Mod 1: Este mod fue creado por THE Smash Bros y está inspirado en el personaje de móvil Kit de Brawl Stars. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Diddy_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/KIT.JPG" alt="Imagen del Mod 1 de Diddy Kong" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Aaronnitmat y está inspirado en Diddy con ropa casual, se ve muy fresco. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Diddy_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/CA.JPG" alt="Imagen del Mod 2 de Diddy Kong" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Hero Zero y está inspirado en Diddy Kong con bocina, se ve muy facha. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Diddy_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/BO.JPG" alt="Imagen del Mod 3 de Diddy Kong" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por LauraPaln y está inspirado en Mac Miller. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Diddy_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/MAA.JPG" alt="Imagen del Mod 4 de Diddy Kong" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Aaronmit y está inspirado en Nike, la marca de ropa. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Diddy_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/NI.JPG" alt="Imagen del Mod 5 de Diddy Kong" width="600" height="400">
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="lucas">
+  <h1>Mods de Lucas</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Hanx y está inspirado en el traje de Lucas en Mother 3. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Lucas_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/MO.JPG" alt="Imagen del Mod 1 de Lucas" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Polinym y está inspirado en Zelda del universo de Toon Link. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Lucas_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/ZE.JPG" alt="Imagen del Mod 2 de Lucas" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por HackSponge y está inspirado en Dr. Neo Cortex de Crash Bandicoot, le queda muy bien a Lucas. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Lucas_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/COR.JPG" alt="Imagen del Mod 3 de Lucas" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Happy190 y está basado en Kumatora de EarthBound/Mother, incluye expresiones y voz. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Lucas_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/KU.JPG" alt="Imagen del Mod 4 de Lucas" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Holyrealm y está inspirado en Lucas con look competitivo y casual, con mascarilla incluida. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Lucas_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/KE.JPG" alt="Imagen del Mod 5 de Lucas" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="sonic">
+  <h1>Mods de Sonic</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Purple Enjoyers y está basado en Super Sonic, con efectos y recolores. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Sonic_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/SS.JPG" alt="Imagen del Mod 1 de Sonic" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por MarromRed y está basado en el estilo antiguo de Mickey Mouse. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Sonic_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/GO.JPG" alt="Imagen del Mod 2 de Sonic" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Stuart y está inspirado en Amy Rose, incluye voces, efectos y un nuevo CSS. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Sonic_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/AMY.JPG" alt="Imagen del Mod 3 de Sonic" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Mr.Dunkman y está inspirado en Shadow, con el mejor modelo de Shadow. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Sonic_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/SH.JPG" alt="Imagen del Mod 4 de Sonic" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por WomboKombo y está basado en Shadow de la película Sonic 3. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Sonic_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/3.JPG" alt="Imagen del Mod 5 de Sonic" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="rey-dedede">
+  <h1>Mods de Rey Dedede</h1>
+  <article class="mod">
+     <p>
+  Mod 1: Este mod fue creado por A thing y está basado en Yoshi Gordo. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ReyDedede_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/Y.JPG" alt="Imagen del Mod 1 de Rey Dedede" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por LN310 y está basado en el Final Smash de Rey Dedede donde usa su mítica máscara. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ReyDedede_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/ED.JPG" alt="Imagen del Mod 2 de Rey Dedede" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por IRLGO y está basado en un modelo oscuro de Dedede, se ve muy chido. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ReyDedede_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/D.JPG" alt="Imagen del Mod 3 de Rey Dedede" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Ese que se ve en la foto, basado en renderizado de Dedede de Kirby y la Tierra Olvidada, modelo lindo. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ReyDedede_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/FL.JPG" alt="Imagen del Mod 4 de Rey Dedede" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Blu y es Dedede DJ, se ve genial y muy facha. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ReyDedede_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/DJ.JPG" alt="Imagen del Mod 5 de Rey Dedede" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="olimar">
+  <h1>Mods de Olimar</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Smac y está inspirado en Conifer, personaje de Pikmin. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Olimar_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/CON.JPG" alt="Imagen del Mod 1 de Olimar" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Tamin y está inspirado en los Toads, les queda muy bien. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Olimar_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/TT.JPG" alt="Imagen del Mod 2 de Olimar" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por IronKnucle y está inspirado en Olimar con traje o pijama de Thunderbirds. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Olimar_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/O.JPG" alt="Imagen del Mod 3 de Olimar" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por A thing y está basado en Baby Mario, modelo lindo. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Olimar_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/BM.JPG" alt="Imagen del Mod 4 de Olimar" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Shinsei y es un cosplay de Mario en Olimar o quizá Mario lo capturó con Cappy. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Olimar_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/DJ.JPG" alt="Imagen del Mod 5 de Olimar" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="lucario">
+  <h1>Mods de Lucario</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Nin10 y está inspirado en la evolución de Lucario: Mega Lucario. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Lucario_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/M.JPG" alt="Imagen del Mod 1 de Lucario" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Regen 07 y está inspirado en Goku, tremendo cosplay de Lucario. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Lucario_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/GOKU.JPG" alt="Imagen del Mod 2 de Lucario" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Purple Enjoyers y está basado en el Team Rocket. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Lucario_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/R.JPG" alt="Imagen del Mod 3 de Lucario" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Terroro y está basado en los trajes de Fortnite, tipo Ninja o Samurai, le queda muy bien a Lucario. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Lucario_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/FO.JPG" alt="Imagen del Mod 4 de Lucario" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Ficher y está basado en el estilo fashion de Fortnite. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Lucario_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/FA.JPG" alt="Imagen del Mod 5 de Lucario" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="r.o.b.">
+  <h1>Mods de R.O.B.</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Purple Enjoyers y está basado en los juguetes de R.O.B. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ROB_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/TOY.JPG" alt="Imagen del Mod 1 de R.O.B." width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por WomboKombo y está basado en Karen de Bob Esponja. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ROB_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/KA.JPG" alt="Imagen del Mod 2 de R.O.B." width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Danko, un recolor donde R.O.B. tiene una coronita. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ROB_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/KR.JPG" alt="Imagen del Mod 3 de R.O.B." width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por MarioFan2005 y está inspirado en una Nintendo Switch, simple y efectiva. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ROB_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/NS.JPG" alt="Imagen del Mod 4 de R.O.B." width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por B.D.MOODER y está basado en WALL·E, modelo lindo. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ROB_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/WA.JPG" alt="Imagen del Mod 5 de R.O.B." width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="toon-link">
+  <h1>Mods de Toon Link</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Este mod fue creado por Happy190 y está basado en el estilo gráfico de Wind Waker, muy colorido. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ToonLink_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/WW.JPG" alt="Imagen del Mod 1 de Toon Link" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Purple Enjoyers y está basado en Toon Link mujer, similar al Link adulto pero versión Toon. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ToonLink_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/TL.JPG" alt="Imagen del Mod 2 de Toon Link" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Toot Noot y está basado en Toon Link del Nintendo DS, hasta con cara de gato. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ToonLink_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/DS.JPG" alt="Imagen del Mod 3 de Toon Link" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Izler y está basado en la skin de los otros dos Links, la Fierce. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ToonLink_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/FF.JPG" alt="Imagen del Mod 4 de Toon Link" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por MGbrad, basado solo en colores. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/ToonLink_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/ROSA.JPG" alt="Imagen del Mod 5 de Toon Link" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="wolf">
+  <h1>Mods de Wolf</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por JOE y es una skin para Wolf que agrega elementos tecnológicos. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Wolf_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/WOWO.JPG" alt="Imagen del Mod 1 de Wolf" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por DEVORY y es un traje blanco estilo Amateratsu para Wolf. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Wolf_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/AMA.JPG" alt="Imagen del Mod 2 de Wolf" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por AbcXyz y está basado en estilo Neon, colores oscuros y llamativos. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Wolf_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/WN.JPG" alt="Imagen del Mod 3 de Wolf" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por LN310 y es un traje elegante, fancy para Wolf. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Wolf_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/FAN.JPG" alt="Imagen del Mod 4 de Wolf" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Paleblank y está basado en estilo drip. Si te interesa este mod, descárgalo ahora en zip:  
+  <a href="mods/Wolf_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/DRIP.JPG" alt="Imagen del Mod 5 de Wolf" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="aldeano">
+  <h1>Mods de Aldeano</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Este mod fue creado por Emb3r y está basado en el estilo Timeless, le queda muy lindo al Aldeano.  
+  <a href="mods/Aldeano_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/LE.JPG" alt="Imagen del Mod 1 de Aldeano" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por LuigiTKO y está basado en el modelo del Aldeano en Mario Kart 8, estilo lindo.  
+  <a href="mods/Aldeano_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/MK8.JPG" alt="Imagen del Mod 2 de Aldeano" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Flatzone, muy tierno.  
+  <a href="mods/Aldeano_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/BALL.JPG" alt="Imagen del Mod 3 de Aldeano" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Guy, inspirado en clases de Duolingo (aunque no enseñe mucho inglés).  
+  <a href="mods/Aldeano_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/DUO.JPG" alt="Imagen del Mod 4 de Aldeano" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por VOLYA y está basado en la aldeana de Mario Kart 8.  
+  <a href="mods/Aldeano_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/MK8G.JPG" alt="Imagen del Mod 5 de Aldeano" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="mega-man">
+  <h1>Mods de Mega Man</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Este mod fue creado por Purple Enjoyers y está basado en los juegos de 8BIT de Mega Man, incluye un pack completo.  
+  <a href="mods/MegaMan_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/8M.JPG" alt="Imagen del Mod 1 de Mega Man" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por MI SHI y está basado en Rico, amiga de Mega Man.  
+  <a href="mods/MegaMan_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/RICO.JPG" alt="Imagen del Mod 2 de Mega Man" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por LN310 y está basado en Astro Boy, parecido a Mega Man en la infancia.  
+  <a href="mods/MegaMan_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/ASTRO.JPG" alt="Imagen del Mod 3 de Mega Man" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por the1up y muestra a Mega Man sin traje o armadura, humanoide.  
+  <a href="mods/MegaMan_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/OFF.JPG" alt="Imagen del Mod 4 de Mega Man" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Hero Zero, basado en el modelo animado de Mega Man (similar a Marvel vs Capcom 2).  
+  <a href="mods/MegaMan_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/MM.JPG" alt="Imagen del Mod 5 de Mega Man" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="entrenadora-wii-fit">
+  <h1>Mods de Entrenadora Wii Fit</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por REGEN07 y es un pack de skins con distintos peinados.  
+  <a href="mods/WiiFit_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/HAIR.JPG" alt="Imagen del Mod 1 de Entrenadora Wii Fit" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por PIP, incluye varios uniformes.  
+  <a href="mods/WiiFit_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/OUT.JPG" alt="Imagen del Mod 2 de Entrenadora Wii Fit" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por BADguy.  
+  <a href="mods/WiiFit_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/CACALAMARDO.JPG" alt="Imagen del Mod 3 de Entrenadora Wii Fit" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Memergamer, basado en Glamrock chica de Freddy.  
+  <a href="mods/WiiFit_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/CHICA.JPG" alt="Imagen del Mod 4 de Entrenadora Wii Fit" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por BUDSMITH, entrenadora original.  
+  <a href="mods/WiiFit_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/MAN.JPG" alt="Imagen del Mod 5 de Entrenadora Wii Fit" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="rosalina-and-luma">
+  <h1>Mods de Rosalina & Luma</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Skin de Rosalina muy bella y colores llamativos.  
+  <a href="mods/Rosalina_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/AU.JPG" alt="Imagen del Mod 1 de Rosalina & Luma" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Basado en Halloween, estilo bonito.  
+  <a href="mods/Rosalina_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/HALL.WEBP" alt="Imagen del Mod 2 de Rosalina & Luma" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Inspirado en la saga de Inkling Fashion, se ve bien en Rosalina.  
+  <a href="mods/Rosalina_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/FASH.JPG" alt="Imagen del Mod 3 de Rosalina & Luma" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Modelo casual de Rosalina y Luma con traje tierno.  
+  <a href="mods/Rosalina_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/CYN.JPG" alt="Imagen del Mod 4 de Rosalina & Luma" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Estilo casual inspirado en Super Mario Odyssey.  
+  <a href="mods/Rosalina_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/ODD.JPG" alt="Imagen del Mod 5 de Rosalina & Luma" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="little-mac">
+  <h1>Mods de Little Mac</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Recolor blanco y negro de Little Mac.  
+  <a href="mods/LittleMac_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/BL.JPG" alt="Imagen del Mod 1 de Little Mac" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Estilo casual con chaqueta de rock.  
+  <a href="mods/LittleMac_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/CAS.JPG" alt="Imagen del Mod 2 de Little Mac" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Inspirado en los guardias del juego del calamar, simple y efectivo.  
+  <a href="mods/LittleMac_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/SQ.JPG" alt="Imagen del Mod 3 de Little Mac" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Basado en Kurohyou, estilo muy bueno.  
+  <a href="mods/LittleMac_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/KUR.JPG" alt="Imagen del Mod 4 de Little Mac" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Creado por ELXOKAS.  
+  <a href="mods/LittleMac_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/XOK.JPG" alt="Imagen del Mod 5 de Little Mac" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="greninja">
+  <h1>Mods de Greninja</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Basado en los colores de Ash y pack de recolores.  
+  <a href="mods/Greninja_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/ASS.JPG" alt="Imagen del Mod 1 de Greninja" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Estilo kung fu/ninja con sombrerito característico.  
+  <a href="mods/Greninja_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/SO.JPG" alt="Imagen del Mod 2 de Greninja" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Estilo oscuro para Greninja.  
+  <a href="mods/Greninja_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/SHAD.JPG" alt="Imagen del Mod 3 de Greninja" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Estilo “diamante”, colores llamativos.  
+  <a href="mods/Greninja_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/DI.JPG" alt="Imagen del Mod 4 de Greninja" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Estilo elegante con recolor y efectos nuevos.  
+  <a href="mods/Greninja_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/RO.JPG" alt="Imagen del Mod 5 de Greninja" width="600" height="400">  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="mii-brawler">
+  <h1>Mods de Mii Brawler</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Basado en Sub Zero.  
+  <a href="mods/MiiBrawler_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/SZ.JPG" alt="Imagen del Mod 1 de Mii Brawler" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Basado en PlushTrap de FNAF 4.  
+  <a href="mods/MiiBrawler_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/TR.JPG" alt="Imagen del Mod 2 de Mii Brawler" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Basado en Rayman.  
+  <a href="mods/MiiBrawler_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/RAY.JPG" alt="Imagen del Mod 3 de Mii Brawler" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Sub Zero versión mejorada.  
+  <a href="mods/MiiBrawler_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/2.JPG" alt="Imagen del Mod 4 de Mii Brawler" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Mod random de Hack Sponge.  
+  <a href="mods/MiiBrawler_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/MIL.JPG" alt="Imagen del Mod 5 de Mii Brawler" width="600" height="400">   </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="mii-swordfighter">
+  <h1>Mods de Mii Swordfighter</h1>
+  <article class="mod">
+     <p>
+  Mod 1: Armaduras de Minecraft.  
+  <a href="mods/MiiSwordfighter_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/MINEC.JPG" alt="Imagen del Mod 1 de Mii Swordfighter" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Basado en Goemon, referencia a Smash Remix.  
+  <a href="mods/MiiSwordfighter_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/GOE.JPG" alt="Imagen del Mod 2 de Mii Swordfighter" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Basado en Hollow Knight.  
+  <a href="mods/MiiSwordfighter_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/HO.JPG" alt="Imagen del Mod 3 de Mii Swordfighter" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Basado en Herobrine.  
+  <a href="mods/MiiSwordfighter_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/HEROBRINE.JPG" alt="Imagen del Mod 4 de Mii Swordfighter" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Basado en un caballero.  
+  <a href="mods/MiiSwordfighter_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/LN.JPG" alt="Imagen del Mod 5 de Mii Swordfighter" width="600" height="400"> 
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="mii-gunner">
+  <h1>Mods de Mii Gunner</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Basado en Master Chief.  
+  <a href="mods/MiiGunner_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/CHI.JPG" alt="Imagen del Mod 1 de Mii Gunner" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 2: Basado en los guardias del juego del calamar.  
+  <a href="mods/MiiGunner_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/PIS.JPG" alt="Imagen del Mod 2 de Mii Gunner" width="600" height="400">  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Recolores de personajes de Cuphead.  
+  <a href="mods/MiiGunner_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/CUP.JPG" alt="Imagen del Mod 3 de Mii Gunner" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 4: Basado en Neo Cortex.  
+  <a href="mods/MiiGunner_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/N.JPG" alt="Imagen del Mod 4 de Mii Gunner" width="600" height="400"> </article>
+  <article class="mod">
+     <p>
+  Mod 5: Basado en Doraemon.  
+  <a href="mods/MiiGunner_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/DO.JPG" alt="Imagen del Mod 5 de Mii Gunner" width="600" height="400"> 
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="palutena">
+  <h1>Mods de Palutena</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Akomni y está basado en Palutena Maestra. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Palutena_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/TE.JPG" alt="Imagen del Mod 1 de Palutena" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Ponoka y es un recolor de Palutena que la verdad está bien, está bonito. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Palutena_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/MORI.JPG" alt="Imagen del Mod 2 de Palutena" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Cradiculous y está basado en la bruja de Banjo y Kazooie. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Palutena_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/BRUJA.JPG" alt="Imagen del Mod 3 de Palutena" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Rosalyne y está basado en Pauline claramente. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Palutena_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/LINA.JPG" alt="Imagen del Mod 4 de Palutena" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Purple Enjoyers y está basado en Palutena elegante, la cual se le ve muy facha. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Palutena_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/COP.JPG" alt="Imagen del Mod 5 de Palutena" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="pac-man">
+  <h1>Mods de Pac-Man</h1>
+  <article class="mod">
+     <p>
+  Mod 1: Este mod fue creado por Silent y está basado en el Rey Bomba de Mario 64, increíble mod, tiene recolores, nuevas texturas y muy chido. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/PacMan_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/BOMBA.JPG" alt="Imagen del Mod 1 de Pac-Man" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Miguel y está basado en Pac Man con armadura y se le ve bien, igual en partida se ve bien. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/PacMan_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/ARMA.JPG" alt="Imagen del Mod 2 de Pac-Man" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por LUCKY JERO y está basado en estilo RGB y la verdad, que buena skin, súper chida y linda, hasta el hidratante está con esos colores RGB. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/PacMan_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/ARCO.JPG" alt="Imagen del Mod 3 de Pac-Man" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por LUCKY JERO y está basado en el Profe Pac Man, la verdad es muy simple pero muy efectivo, como olvidar ese personaje en Pac Man World 2. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/PacMan_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/PROFE.JPG" alt="Imagen del Mod 4 de Pac-Man" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Snouski y está basado en el estilo antiguo y le queda muy bien a Pac Man por alguna razón. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/PacMan_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/BN.JPG" alt="Imagen del Mod 5 de Pac-Man" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="robin">
+  <h1>Mods de Robin</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por LN310 y es un recolor bonito de Robin, blanco elegante y se ve bien. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Robin_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/CEL.JPG" alt="Imagen del Mod 1 de Robin" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por PIGWON LUNAIRE y es un recolor oscuro de Robin, lo cual está muy chido. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Robin_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/BR.JPG" alt="Imagen del Mod 2 de Robin" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Vexser y está basado en el modelo de Zelda de TOTK y la verdad es interesante verla como Robin. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Robin_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/MELDA.JPG" alt="Imagen del Mod 3 de Robin" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Blu y está basado en Neytan Adams de Yokai Watch, la verdad lo puse por nostalgia nomás. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Robin_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/NEW.JPG" alt="Imagen del Mod 4 de Robin" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Blaze y está basado en Genshin Impact, la verdad se le ve bien a Robin. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Robin_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/HU.JPG" alt="Imagen del Mod 5 de Robin" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="shulk">
+  <h1>Mods de Shulk</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Marihoo y está basado en enemigos de Transformers y a la verdad le quedan a Shulk por alguna rara razón. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Shulk_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/NU.JPG" alt="Imagen del Mod 1 de Shulk" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Akeru y la verdad que buen mod, es un pack de recolores para Shulk pero con ese estilo oscuro pero a la vez llamativo de colores. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Shulk_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/TRON.JPG" alt="Imagen del Mod 2 de Shulk" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Guy y bueno es Moe, no tengo palabras, YOU GOT A DUDE. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Shulk_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/MOE.JPG" alt="Imagen del Mod 3 de Shulk" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por IronKnucle y está basado en Linterna Verde. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Shulk_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/GREEN.JPG" alt="Imagen del Mod 4 de Shulk" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Polinym y está basado en Sailor Venus. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Shulk_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/VEN.JPG" alt="Imagen del Mod 5 de Shulk" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="bowser-jr">
+  <h1>Mods de Bowser Jr.</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Este mod fue creado por Danil y está basado en el Doctor Huevo de Sonic. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/BowserJr_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/EGG.JPG" alt="Imagen del Mod 1 de Bowser Jr." width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por A thing y está basado en una Kangreburguer de Bob Esponja. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/BowserJr_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/SO.JPG" alt="Imagen del Mod 2 de Bowser Jr." width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Blue y está basado en Lakitu. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/BowserJr_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/LAKI.JPG" alt="Imagen del Mod 3 de Bowser Jr." width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Blue y está basado en un perrito que no conozco pero está chido, ¿no? Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/BowserJr_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/DOG.JPG" alt="Imagen del Mod 4 de Bowser Jr." width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Insideius y está basado en el modo esqueleto de Bowser Jr. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/BowserJr_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/DRYJ.JPG" alt="Imagen del Mod 5 de Bowser Jr." width="600" height="400">
+  </p>
+  </article> 
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="duck-hunt">
+  <h1>Mods de Duck Hunt</h1>
+  <article class="mod">
+     <p>
+  Mod 1: Este mod fue creado por TamaYoshi y está basado en el gran Spyro, amigo de Crash, es increíble. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/DuckHunt_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/SPYRO.JPG" alt="Imagen del Mod 1 de Duck Hunt" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Poefe y está basado en el perro de Mega Man. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/DuckHunt_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/NIGGA.JPG" alt="Imagen del Mod 2 de Duck Hunt" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por MrSneaky y está basado en el pato y lobo de Minecraft, vaya putada. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/DuckHunt_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/LALAVA.JPG" alt="Imagen del Mod 3 de Duck Hunt" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Happy y está inspirado en el perro de la Wii. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/DuckHunt_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/WID.JPG" alt="Imagen del Mod 4 de Duck Hunt" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por JJ314 y bueno, ¿qué decir? Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/DuckHunt_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/PATO.JPG" alt="Imagen del Mod 5 de Duck Hunt" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="ryu">
+  <h1>Mods de Ryu</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Erro Will y está basado en el modelo poligonal de Ryu de SF de PS1. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ryu_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/PS1.JPG" alt="Imagen del Mod 1 de Ryu" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Tofunya y está basado en el gran Akuma. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ryu_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/AKUMA.JPG" alt="Imagen del Mod 2 de Ryu" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Aafyre y está basado en los nemesis Sub Zero y Scorpion. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ryu_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/MK.JPG" alt="Imagen del Mod 3 de Ryu" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por MessyProduct y está basado en la buena de Sakura (digo porque no es villana). Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ryu_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/SAKU.JPG" alt="Imagen del Mod 4 de Ryu" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por no sé y está basado en Rene lol. ¿Por qué? Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ryu_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/RENE.JPG" alt="Imagen del Mod 5 de Ryu" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="ken">
+  <h1>Mods de Ken</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por ILGR0 y está basado en un traje de cazador para Ken, lo cual tiene un aura que te cagas. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ken_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/WIL.JPG" alt="Imagen del Mod 1 de Ken" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por FlashDBC y está basado en Guy de ST IV. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ken_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/GUY.JPG" alt="Imagen del Mod 2 de Ken" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Tofu yi y está basado en Goku, incluyendo un pack de skins y recolores muy buenos y simples. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ken_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/TOFU.JPG" alt="Imagen del Mod 3 de Ken" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por INCREDIBKLES y está basado en el modelo de Ken de SF6, el cual está muy chingón y facha. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ken_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/SF.JPG" alt="Imagen del Mod 4 de Ken" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por SIros y está basado en Ken con armadura. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ken_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/RAT.JPG" alt="Imagen del Mod 5 de Ken" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="cloud">
+  <h1>Mods de Cloud</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Happy y está basado en Pura de Crash Bandicoot pero además en una skin de CTRNF. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Cloud_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/PURA.JPG" alt="Imagen del Mod 1 de Cloud" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Messy Products y está basado en un estilo con armadura muy chingona para Cloud. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Cloud_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/BAH.JPG" alt="Imagen del Mod 2 de Cloud" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Erro Will y está basado en el modelo de Cloud de PS1, lo cual es una nostalgia de la buena, aunque claro era menos atractivo. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Cloud_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/CPS1.JPG" alt="Imagen del Mod 3 de Cloud" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Poefe y está basado en un amigo de Mega Man. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Cloud_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/MEGAM.JPG" alt="Imagen del Mod 4 de Cloud" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Hero zero y está basado en el modelo de Cloud de Numora, el cual es increíble. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Cloud_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/CLO.JPG" alt="Imagen del Mod 5 de Cloud" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="corrin">
+  <h1>Mods de Corrin</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por LN310 y está basado en Corrin con traje de festival. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Corrin_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/FEST.JPG" alt="Imagen del Mod 1 de Corrin" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Noivy y está basado en un traje formal de dragón. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Corrin_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/DRA.JPG" alt="Imagen del Mod 2 de Corrin" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por hanx y está basado en Sailor Moon, se ve bien. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Corrin_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/Sai.JPG" alt="Imagen del Mod 3 de Corrin" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Hanx y está basado en Corrin Ninja. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Corrin_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/NINJA.JPG" alt="Imagen del Mod 4 de Corrin" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por Sagawi y está basado en Corrin Maestra. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Corrin_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/TEA.JPG" alt="Imagen del Mod 5 de Corrin" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="bayonetta">
+  <h1>Mods de Bayonetta</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Hanx y está inspirado en un vestido de Verani para Bayonetta. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Bayonetta_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/BLANCO.JPG" alt="Imagen del Mod 1 de Bayonetta" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Hmx y está basado en Sailor Moon, así Bayo es una Sailor Scout. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Bayonetta_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/LOR.JPG" alt="Imagen del Mod 2 de Bayonetta" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Hanx (otra vez) y está basado en el modelo de Bayonetta 3. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Bayonetta_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/B3.JPG" alt="Imagen del Mod 3 de Bayonetta" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Elite9 y está basado en la saga de skins Inkling fashion. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Bayonetta_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/INK.JPG" alt="Imagen del Mod 4 de Bayonetta" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por JJ314 y está inspirado en un personaje de Fortnite. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Bayonetta_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/NITE.JPG" alt="Imagen del Mod 5 de Bayonetta" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="inkling">
+  <h1>Mods de Inkling</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Tony y está basado en aspectos góticos para las Inklings. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Inkling_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/EMO.JPG" alt="Imagen del Mod 1 de Inkling" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por DEVORY y está basado en Bendy, la verdad que original. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Inkling_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/BENDY.JPG" alt="Imagen del Mod 2 de Inkling" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Stick y está basado en un ángel. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Inkling_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/ING.JPG" alt="Imagen del Mod 3 de Inkling" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por Hcksponge y está basado en el juego de Epic Mickey, el juego donde pintas. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Inkling_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/VRG.JPG" alt="Imagen del Mod 4 de Inkling" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por DEVORY y está basado en el personaje de Min Min. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Inkling_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/INMIN.JPG" alt="Imagen del Mod 5 de Inkling" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="ridley">
+  <h1>Mods de Ridley</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por [Autor desconocido]. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ridley_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/PS1.JPG" alt="Imagen del Mod 1 de Ridley" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Tofunya y está basado en el gran Akuma. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ridley_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/AKUMA.JPG" alt="Imagen del Mod 2 de Ridley" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Aafyre y está basado en los nemesis Sub Zero y Scorpion. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ridley_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/MK.JPG" alt="Imagen del Mod 3 de Ridley" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por MessyProduct y está basado en Sakura. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ridley_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/SAKU.JPG" alt="Imagen del Mod 4 de Ridley" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por [Autor desconocido] y está basado en Rene. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Ridley_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/RENE.JPG" alt="Imagen del Mod 5 de Ridley" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="simon">
+  <h1>Mods de Simon</h1>
+  <article class="mod">
+    <p>
+  Mod 1: Este mod fue creado por Erro Will y está basado en el modelo poligonal de Ryu de SF de PS1. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Simon_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/PS1.JPG" alt="Imagen del Mod 1 de Simon" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Tofunya y está basado en el gran Akuma. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Simon_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/AKUMA.JPG" alt="Imagen del Mod 2 de Simon" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Aafyre y está basado en los nemesis Sub Zero y Scorpion. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Simon_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/MK.JPG" alt="Imagen del Mod 3 de Simon" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por MessyProduct y está basado en Sakura. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Simon_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/SAKU.JPG" alt="Imagen del Mod 4 de Simon" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por [Autor desconocido] y está basado en Rene. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Simon_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/RENE.JPG" alt="Imagen del Mod 5 de Simon" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="richter">
+  <h1>Mods de Richter</h1>
+  <article class="mod">
+   <p>
+  Mod 1: Este mod fue creado por Erro Will y está basado en el modelo poligonal de Ryu de SF de PS1. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Richter_Mod1.zip" download>Descargar ahora</a>
+     <img src="SSBU/PS1.JPG" alt="Imagen del Mod 1 de Richter" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 2: Este mod fue creado por Tofunya y está basado en el gran Akuma. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Richter_Mod2.zip" download>Descargar ahora</a>
+     <img src="SSBU/AKUMA.JPG" alt="Imagen del Mod 2 de Richter" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+      <p>
+  Mod 3: Este mod fue creado por Aafyre y está basado en los nemesis Sub Zero y Scorpion. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Richter_Mod3.zip" download>Descargar ahora</a>
+     <img src="SSBU/MK.JPG" alt="Imagen del Mod 3 de Richter" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 4: Este mod fue creado por MessyProduct y está basado en Sakura. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Richter_Mod4.zip" download>Descargar ahora</a>
+     <img src="SSBU/SAKU.JPG" alt="Imagen del Mod 4 de Richter" width="600" height="400">
+  </p>
+  </article>
+  <article class="mod">
+     <p>
+  Mod 5: Este mod fue creado por [Autor desconocido] y está basado en Rene. Si te interesa este mod, descárgalo ahora en formato ZIP.  
+  <a href="mods/Richter_Mod5.zip" download>Descargar ahora</a>
+     <img src="SSBU/RENE.JPG" alt="Imagen del Mod 5 de Richter" width="600" height="400">
+  </p>
+  </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="rey-k.-rool">
+  <h1>Mods de Rey K. Rool</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Rey K. Rool.</p>
+    <img src="images/rey-k.-rool_mod1.png" alt="Imagen del Mod 1 de Rey K. Rool">
+    <video controls>
+      <source src="videos/rey-k.-rool_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Rey K. Rool.</p>
+    <img src="images/rey-k.-rool_mod2.png" alt="Imagen del Mod 2 de Rey K. Rool">
+    <video controls>
+      <source src="videos/rey-k.-rool_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Rey K. Rool.</p>
+    <img src="images/rey-k.-rool_mod3.png" alt="Imagen del Mod 3 de Rey K. Rool">
+    <video controls>
+      <source src="videos/rey-k.-rool_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Rey K. Rool.</p>
+    <img src="images/rey-k.-rool_mod4.png" alt="Imagen del Mod 4 de Rey K. Rool">
+    <video controls>
+      <source src="videos/rey-k.-rool_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Rey K. Rool.</p>
+    <img src="images/rey-k.-rool_mod5.png" alt="Imagen del Mod 5 de Rey K. Rool">
+    <video controls>
+      <source src="videos/rey-k.-rool_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+   <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="canela">
+  <h1>Mods de Canela</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Isabelle.</p>
+    <img src="images/isabelle_mod1.png" alt="Imagen del Mod 1 de Isabelle">
+    <video controls>
+      <source src="videos/isabelle_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Isabelle.</p>
+    <img src="images/isabelle_mod2.png" alt="Imagen del Mod 2 de Isabelle">
+    <video controls>
+      <source src="videos/isabelle_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Isabelle.</p>
+    <img src="images/isabelle_mod3.png" alt="Imagen del Mod 3 de Isabelle">
+    <video controls>
+      <source src="videos/isabelle_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Isabelle.</p>
+    <img src="images/isabelle_mod4.png" alt="Imagen del Mod 4 de Isabelle">
+    <video controls>
+      <source src="videos/isabelle_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Isabelle.</p>
+    <img src="images/isabelle_mod5.png" alt="Imagen del Mod 5 de Isabelle">
+    <video controls>
+      <source src="videos/isabelle_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+   <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="incineroar">
+  <h1>Mods de Incineroar</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Incineroar.</p>
+    <img src="images/incineroar_mod1.png" alt="Imagen del Mod 1 de Incineroar">
+    <video controls>
+      <source src="videos/incineroar_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Incineroar.</p>
+    <img src="images/incineroar_mod2.png" alt="Imagen del Mod 2 de Incineroar">
+    <video controls>
+      <source src="videos/incineroar_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Incineroar.</p>
+    <img src="images/incineroar_mod3.png" alt="Imagen del Mod 3 de Incineroar">
+    <video controls>
+      <source src="videos/incineroar_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Incineroar.</p>
+    <img src="images/incineroar_mod4.png" alt="Imagen del Mod 4 de Incineroar">
+    <video controls>
+      <source src="videos/incineroar_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Incineroar.</p>
+    <img src="images/incineroar_mod5.png" alt="Imagen del Mod 5 de Incineroar">
+    <video controls>
+      <source src="videos/incineroar_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+   <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="piranha-plant">
+  <h1>Mods de Piranha Plant</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Piranha Plant.</p>
+    <img src="images/piranha-plant_mod1.png" alt="Imagen del Mod 1 de Piranha Plant">
+    <video controls>
+      <source src="videos/piranha-plant_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Piranha Plant.</p>
+    <img src="images/piranha-plant_mod2.png" alt="Imagen del Mod 2 de Piranha Plant">
+    <video controls>
+      <source src="videos/piranha-plant_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Piranha Plant.</p>
+    <img src="images/piranha-plant_mod3.png" alt="Imagen del Mod 3 de Piranha Plant">
+    <video controls>
+      <source src="videos/piranha-plant_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Piranha Plant.</p>
+    <img src="images/piranha-plant_mod4.png" alt="Imagen del Mod 4 de Piranha Plant">
+    <video controls>
+      <source src="videos/piranha-plant_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Piranha Plant.</p>
+    <img src="images/piranha-plant_mod5.png" alt="Imagen del Mod 5 de Piranha Plant">
+    <video controls>
+      <source src="videos/piranha-plant_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+    <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="joker">
+  <h1>Mods de Joker</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Joker.</p>
+    <img src="images/joker_mod1.png" alt="Imagen del Mod 1 de Joker">
+    <video controls>
+      <source src="videos/joker_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Joker.</p>
+    <img src="images/joker_mod2.png" alt="Imagen del Mod 2 de Joker">
+    <video controls>
+      <source src="videos/joker_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Joker.</p>
+    <img src="images/joker_mod3.png" alt="Imagen del Mod 3 de Joker">
+    <video controls>
+      <source src="videos/joker_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Joker.</p>
+    <img src="images/joker_mod4.png" alt="Imagen del Mod 4 de Joker">
+    <video controls>
+      <source src="videos/joker_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Joker.</p>
+    <img src="images/joker_mod5.png" alt="Imagen del Mod 5 de Joker">
+    <video controls>
+      <source src="videos/joker_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+     </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="héroe">
+  <h1>Mods de Héroe</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Héroe.</p>
+    <img src="images/héroe_mod1.png" alt="Imagen del Mod 1 de Héroe">
+    <video controls>
+      <source src="videos/héroe_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Héroe.</p>
+    <img src="images/héroe_mod2.png" alt="Imagen del Mod 2 de Héroe">
+    <video controls>
+      <source src="videos/héroe_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Héroe.</p>
+    <img src="images/héroe_mod3.png" alt="Imagen del Mod 3 de Héroe">
+    <video controls>
+      <source src="videos/héroe_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Héroe.</p>
+    <img src="images/héroe_mod4.png" alt="Imagen del Mod 4 de Héroe">
+    <video controls>
+      <source src="videos/héroe_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Héroe.</p>
+    <img src="images/héroe_mod5.png" alt="Imagen del Mod 5 de Héroe">
+    <video controls>
+      <source src="videos/héroe_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+    </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="banjo-and-kazooie">
+  <h1>Mods de Banjo & Kazooie</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Banjo & Kazooie.</p>
+    <img src="images/banjo-and-kazooie_mod1.png" alt="Imagen del Mod 1 de Banjo & Kazooie">
+    <video controls>
+      <source src="videos/banjo-and-kazooie_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Banjo & Kazooie.</p>
+    <img src="images/banjo-and-kazooie_mod2.png" alt="Imagen del Mod 2 de Banjo & Kazooie">
+    <video controls>
+      <source src="videos/banjo-and-kazooie_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Banjo & Kazooie.</p>
+    <img src="images/banjo-and-kazooie_mod3.png" alt="Imagen del Mod 3 de Banjo & Kazooie">
+    <video controls>
+      <source src="videos/banjo-and-kazooie_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Banjo & Kazooie.</p>
+    <img src="images/banjo-and-kazooie_mod4.png" alt="Imagen del Mod 4 de Banjo & Kazooie">
+    <video controls>
+      <source src="videos/banjo-and-kazooie_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Banjo & Kazooie.</p>
+    <img src="images/banjo-and-kazooie_mod5.png" alt="Imagen del Mod 5 de Banjo & Kazooie">
+    <video controls>
+      <source src="videos/banjo-and-kazooie_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+    </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="terry">
+  <h1>Mods de Terry</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Terry.</p>
+    <img src="images/terry_mod1.png" alt="Imagen del Mod 1 de Terry">
+    <video controls>
+      <source src="videos/terry_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Terry.</p>
+    <img src="images/terry_mod2.png" alt="Imagen del Mod 2 de Terry">
+    <video controls>
+      <source src="videos/terry_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Terry.</p>
+    <img src="images/terry_mod3.png" alt="Imagen del Mod 3 de Terry">
+    <video controls>
+      <source src="videos/terry_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Terry.</p>
+    <img src="images/terry_mod4.png" alt="Imagen del Mod 4 de Terry">
+    <video controls>
+      <source src="videos/terry_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Terry.</p>
+    <img src="images/terry_mod5.png" alt="Imagen del Mod 5 de Terry">
+    <video controls>
+      <source src="videos/terry_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+   <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="byleth">
+  <h1>Mods de Byleth</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Byleth.</p>
+    <img src="images/byleth_mod1.png" alt="Imagen del Mod 1 de Byleth">
+    <video controls>
+      <source src="videos/byleth_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Byleth.</p>
+    <img src="images/byleth_mod2.png" alt="Imagen del Mod 2 de Byleth">
+    <video controls>
+      <source src="videos/byleth_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Byleth.</p>
+    <img src="images/byleth_mod3.png" alt="Imagen del Mod 3 de Byleth">
+    <video controls>
+      <source src="videos/byleth_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Byleth.</p>
+    <img src="images/byleth_mod4.png" alt="Imagen del Mod 4 de Byleth">
+    <video controls>
+      <source src="videos/byleth_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Byleth.</p>
+    <img src="images/byleth_mod5.png" alt="Imagen del Mod 5 de Byleth">
+    <video controls>
+      <source src="videos/byleth_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+   <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="min-min">
+  <h1>Mods de Min Min</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Min Min.</p>
+    <img src="images/min-min_mod1.png" alt="Imagen del Mod 1 de Min Min">
+    <video controls>
+      <source src="videos/min-min_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Min Min.</p>
+    <img src="images/min-min_mod2.png" alt="Imagen del Mod 2 de Min Min">
+    <video controls>
+      <source src="videos/min-min_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Min Min.</p>
+    <img src="images/min-min_mod3.png" alt="Imagen del Mod 3 de Min Min">
+    <video controls>
+      <source src="videos/min-min_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Min Min.</p>
+    <img src="images/min-min_mod4.png" alt="Imagen del Mod 4 de Min Min">
+    <video controls>
+      <source src="videos/min-min_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Min Min.</p>
+    <img src="images/min-min_mod5.png" alt="Imagen del Mod 5 de Min Min">
+    <video controls>
+      <source src="videos/min-min_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+    </article>
+  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="steve">
+  <h1>Mods de Steve</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Steve.</p>
+    <img src="images/steve_mod1.png" alt="Imagen del Mod 1 de Steve">
+    <video controls>
+      <source src="videos/steve_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Steve.</p>
+    <img src="images/steve_mod2.png" alt="Imagen del Mod 2 de Steve">
+    <video controls>
+      <source src="videos/steve_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Steve.</p>
+    <img src="images/steve_mod3.png" alt="Imagen del Mod 3 de Steve">
+    <video controls>
+      <source src="videos/steve_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Steve.</p>
+    <img src="images/steve_mod4.png" alt="Imagen del Mod 4 de Steve">
+    <video controls>
+      <source src="videos/steve_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Steve.</p>
+    <img src="images/steve_mod5.png" alt="Imagen del Mod 5 de Steve">
+    <video controls>
+      <source src="videos/steve_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+    <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="sephiroth">
+  <h1>Mods de Sephiroth</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Sephiroth.</p>
+    <img src="images/sephiroth_mod1.png" alt="Imagen del Mod 1 de Sephiroth">
+    <video controls>
+      <source src="videos/sephiroth_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Sephiroth.</p>
+    <img src="images/sephiroth_mod2.png" alt="Imagen del Mod 2 de Sephiroth">
+    <video controls>
+      <source src="videos/sephiroth_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Sephiroth.</p>
+    <img src="images/sephiroth_mod3.png" alt="Imagen del Mod 3 de Sephiroth">
+    <video controls>
+      <source src="videos/sephiroth_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Sephiroth.</p>
+    <img src="images/sephiroth_mod4.png" alt="Imagen del Mod 4 de Sephiroth">
+    <video controls>
+      <source src="videos/sephiroth_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Sephiroth.</p>
+    <img src="images/sephiroth_mod5.png" alt="Imagen del Mod 5 de Sephiroth">
+    <video controls>
+      <source src="videos/sephiroth_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+ \  <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="pyra-mythra">
+  <h1>Mods de Pyra/Mythra</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Pyra/Mythra.</p>
+    <img src="images/pyra-mythra_mod1.png" alt="Imagen del Mod 1 de Pyra/Mythra">
+    <video controls>
+      <source src="videos/pyra-mythra_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Pyra/Mythra.</p>
+    <img src="images/pyra-mythra_mod2.png" alt="Imagen del Mod 2 de Pyra/Mythra">
+    <video controls>
+      <source src="videos/pyra-mythra_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Pyra/Mythra.</p>
+    <img src="images/pyra-mythra_mod3.png" alt="Imagen del Mod 3 de Pyra/Mythra">
+    <video controls>
+      <source src="videos/pyra-mythra_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Pyra/Mythra.</p>
+    <img src="images/pyra-mythra_mod4.png" alt="Imagen del Mod 4 de Pyra/Mythra">
+    <video controls>
+      <source src="videos/pyra-mythra_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Pyra/Mythra.</p>
+    <img src="images/pyra-mythra_mod5.png" alt="Imagen del Mod 5 de Pyra/Mythra">
+    <video controls>
+      <source src="videos/pyra-mythra_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+   <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="kazuya">
+  <h1>Mods de Kazuya</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Kazuya.</p>
+    <img src="images/kazuya_mod1.png" alt="Imagen del Mod 1 de Kazuya">
+    <video controls>
+      <source src="videos/kazuya_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Kazuya.</p>
+    <img src="images/kazuya_mod2.png" alt="Imagen del Mod 2 de Kazuya">
+    <video controls>
+      <source src="videos/kazuya_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Kazuya.</p>
+    <img src="images/kazuya_mod3.png" alt="Imagen del Mod 3 de Kazuya">
+    <video controls>
+      <source src="videos/kazuya_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Kazuya.</p>
+    <img src="images/kazuya_mod4.png" alt="Imagen del Mod 4 de Kazuya">
+    <video controls>
+      <source src="videos/kazuya_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Kazuya.</p>
+    <img src="images/kazuya_mod5.png" alt="Imagen del Mod 5 de Kazuya">
+    <video controls>
+      <source src="videos/kazuya_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+    <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+<section id="sora">
+  <h1>Mods de Sora</h1>
+  <article class="mod">
+    <p><strong>Mod 1:</strong> Este mod fue creado por [Autor 1] y agrega nuevas características para Sora.</p>
+    <img src="images/sora_mod1.png" alt="Imagen del Mod 1 de Sora">
+    <video controls>
+      <source src="videos/sora_mod1.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 2:</strong> Este mod fue creado por [Autor 2] y agrega nuevas características para Sora.</p>
+    <img src="images/sora_mod2.png" alt="Imagen del Mod 2 de Sora">
+    <video controls>
+      <source src="videos/sora_mod2.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 3:</strong> Este mod fue creado por [Autor 3] y agrega nuevas características para Sora.</p>
+    <img src="images/sora_mod3.png" alt="Imagen del Mod 3 de Sora">
+    <video controls>
+      <source src="videos/sora_mod3.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 4:</strong> Este mod fue creado por [Autor 4] y agrega nuevas características para Sora.</p>
+    <img src="images/sora_mod4.png" alt="Imagen del Mod 4 de Sora">
+    <video controls>
+      <source src="videos/sora_mod4.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+  <article class="mod">
+    <p><strong>Mod 5:</strong> Este mod fue creado por [Autor 5] y agrega nuevas características para Sora.</p>
+    <img src="images/sora_mod5.png" alt="Imagen del Mod 5 de Sora">
+    <video controls>
+      <source src="videos/sora_mod5.mp4" type="video/mp4">
+      Tu navegador no soporta el video.
+    </video>
+  </article>
+   <p><a href="#" onclick="show('home')">← Volver al catálogo</a></p>
+</section>
+
+
+<script>
+  function show(id) {
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+</script>
+
+</body>
+</html>
